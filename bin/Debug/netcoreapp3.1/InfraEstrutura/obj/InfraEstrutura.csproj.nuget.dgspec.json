@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\FoodServiceApi.csproj": {}
+    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -60,14 +60,14 @@
         }
       }
     },
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\FoodServiceApi.csproj": {
+    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\FoodServiceApi.csproj",
-        "projectName": "FoodServiceApi",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\FoodServiceApi.csproj",
+        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+        "projectName": "InfraEstrutura",
+        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
         "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\obj\\",
+        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -87,8 +87,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj"
+              "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -101,6 +101,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -112,9 +118,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
