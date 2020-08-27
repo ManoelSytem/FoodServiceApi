@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+
+body {
+    background: #9796f0;
+    background: -webkit-linear-gradient(to right, #96969e, #efff0e);
+    background: linear-gradient(to right, #96969e, #efff0e);
+  }
+  
+  .nav-link {
+    color: #555;
+  }
+  
+  .nav-link:hover {
+    background: #f5f5f5;
+  }
+  

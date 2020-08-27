@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj": {}
+    "C:\\Users\\Tees\\source\\repos\\BusinessLogic\\BusinessLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj": {
+    "C:\\Users\\Tees\\source\\repos\\BusinessLogic\\BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\BusinessLogic\\BusinessLogic.csproj",
         "projectName": "BusinessLogic",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj",
+        "projectPath": "C:\\Users\\Tees\\source\\repos\\BusinessLogic\\BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\obj\\",
+        "outputPath": "C:\\Users\\Tees\\source\\repos\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
-                "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj"
+              "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\InfraEstrutura.csproj": {
+                "projectPath": "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\InfraEstrutura.csproj"
               }
             }
           }
@@ -64,14 +64,14 @@
         }
       }
     },
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
+    "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
+        "projectPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj",
         "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\obj\\",
+        "outputPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -120,14 +120,14 @@
         }
       }
     },
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
+    "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\InfraEstrutura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\InfraEstrutura.csproj",
         "projectName": "InfraEstrutura",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+        "projectPath": "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\InfraEstrutura.csproj",
         "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\obj\\",
+        "outputPath": "C:\\Users\\Tees\\source\\repos\\InfraEstrutura\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -147,8 +147,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj"
+              "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\Users\\Tees\\source\\repos\\Dominio\\Dominio.csproj"
               }
             }
           }

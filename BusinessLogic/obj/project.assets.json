@@ -903,9 +903,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj",
-      "projectName": "BusinessLogic",
-      "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\BusinessLogic.csproj",
+      "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
+      "projectName": "Aplication",
+      "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
       "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\obj\\",
       "projectStyle": "PackageReference",
