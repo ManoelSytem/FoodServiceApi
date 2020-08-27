@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 using Aplication.Interface;
+using Aplication.Model;
+using Aplication.Negocio;
 using Aplication.Servico;
 using Aplication.Util;
 using Dominio;
@@ -42,21 +45,47 @@ namespace FoodServiceApi.Controllers
         // POST api/<CardapioController>
         [Route("Create")]
         [HttpPost]
-        public BadRequestObjectResult Post(CardapioModel cardapioModel)
+        public ActionResultado Post(CardapioModel cardapioModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
-                _CardapioService.Adicionar(novoCarpio);
-                return BadRequest(ModelState);
+                if (ModelState.IsValid)
+                {
+                    Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
+                    _CardapioService.Adicionar(novoCarpio);
+                    return _JsonAutoMapper.Resposta("Cadapio criado com sucesso!");
+                }
             }
-            return BadRequest("sucesso");
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!",e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
 
-        // PUT api/<CardapioController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost]
+        [Route("CreateListaCardapio")]
+        public ActionResultado AddListaItemProduto(ListaModel listaCardapioItemPodutoModel)
         {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                    ListaItemProduto litaItemProduto = _JsonAutoMapper.ConvertAutoMapperJson<ListaItemProduto>(listaCardapioItemPodutoModel);
+                    List<ListaItemProduto> ListaCardapio = new List<ListaItemProduto>();
+                    produtoNegocio.VerificaListaDeProdutoExiste(listaCardapioItemPodutoModel.ListCodProduto);
+                    _CardapioService.CriarListaCardapio(litaItemProduto);
+                    return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
+                }
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
 
         // DELETE api/<CardapioController>/5
