@@ -7,6 +7,6 @@ namespace Aplication.Interface
 {
     public interface ICardapio
     {
-        public void Adicionar(Cardapio cli);
+        public void CriarListaCardapio(ListaItemProduto listaItemProduto);
     }
 }

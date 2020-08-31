@@ -3,7 +3,9 @@ using InfraEstrutura;
 using InfraEstrutura.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Aplication.Repository
@@ -17,7 +19,7 @@ namespace Aplication.Repository
         }
         public void Add(ListaItemProduto entity)
         {
-            throw new NotImplementedException();
+            _context.ListaItemProduto.Add(entity);
         }
 
         public void Delete(ListaItemProduto entity)

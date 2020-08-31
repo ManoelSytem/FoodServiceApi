@@ -23,9 +23,9 @@ namespace FoodServiceApi.Controllers
     {
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly CardapioService _CardapioService;
-        public CardapioController(IJsonAutoMapper jsonAutoMapper)
+        public CardapioController(IJsonAutoMapper JsonAutoMapper)
         {
-            _JsonAutoMapper = jsonAutoMapper;
+            _JsonAutoMapper = JsonAutoMapper;
             _CardapioService = new CardapioService();
         }
         // GET: api/<CardapioController>
@@ -51,6 +51,7 @@ namespace FoodServiceApi.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    
                     Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
                     _CardapioService.Adicionar(novoCarpio);
                     return _JsonAutoMapper.Resposta("Cadapio criado com sucesso!");

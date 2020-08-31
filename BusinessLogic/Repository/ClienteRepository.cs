@@ -33,17 +33,19 @@ namespace BusinessLogic.Repository
         {
             _context.Cliente.Update(entity);
         }
-        public IEnumerable<Cliente> Get(Expression<Func<Cliente, bool>> predicate)
-        {
-            return _context.Cliente.Where(predicate);
-        }
-        public Cliente GetById(Expression<Func<Cliente, bool>> predicate)
-        {
-            return _context.Cliente.FirstOrDefault(predicate);
-        }
         public IEnumerable<Cliente> GetClientesPorNome()
         {
             return Get().OrderBy(c => c.nome).ToList();
+        }
+
+        public IEnumerable<Cliente> Get(Expression<Func<Cliente, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente GetById(Expression<Func<Cliente, bool>> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

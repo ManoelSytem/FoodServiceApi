@@ -23,22 +23,26 @@ namespace InfraEstrutura.Repository
         {
             _context.Set<T>().Remove(entity);
         }
-        public void Update(T entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.Set<T>().Update(entity);
-        }
+
         public IEnumerable<T> Get()
         {
             return _context.Set<T>().AsEnumerable<T>();
         }
+
         public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().Where(predicate).AsEnumerable<T>();
+           return _context.Set<T>().Where(predicate).AsEnumerable<T>();
         }
+
         public T GetById(Expression<Func<T, bool>> predicate)
         {
-            return _context.Set<T>().SingleOrDefault(predicate);
+            return _context.Set<T>().Single(predicate);
+        }
+
+        public void Update(T entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.Set<T>().Update(entity);
         }
 
     }

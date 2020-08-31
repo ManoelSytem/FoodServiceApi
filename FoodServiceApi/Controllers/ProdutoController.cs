@@ -45,7 +45,6 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                Produto teste = _JsonAutoMapper.ConvertAutoMapperJson<Produto>(produtoModel);
                 if (ModelState.IsValid)
                 {
                      Produto produto = _JsonAutoMapper.ConvertAutoMapperJson<Produto>(produtoModel);

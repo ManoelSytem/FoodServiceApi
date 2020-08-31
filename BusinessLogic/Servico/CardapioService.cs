@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Aplication.Servico
 {
-    public class CardapioService : IDisposable
+    public class CardapioService : IDisposable, ICardapio
     {
         UnitOfWork _uow;
         public CardapioService(UnitOfWork uow)
@@ -25,20 +25,23 @@ namespace Aplication.Servico
         {
             return _uow.CardapioRepository.Get();
         } 
-        public void Adicionar(Cardapio cli)
+        public void Adicionar(Cardapio card)
         {
-            _uow.CardapioRepository.Add(cli);
-            _uow.Commit();
+            _uow.CardapioRepository.Add(card);
         }
-        public void Excluir(Cardapio cli)
+        public void CriarListaCardapio(ListaItemProduto listaItemProduto)
         {
-            _uow.CardapioRepository.Delete(cli);
+            _uow.ProdutoItemRepository.Add(listaItemProduto);
+        }
+        public void Excluir(Cardapio card)
+        {
+            _uow.CardapioRepository.Delete(card);
             _uow.Commit();
 
         }
-        public void Alterar(Cardapio cli)
+        public void Alterar(Cardapio card)
         {
-            _uow.CardapioRepository.Update(cli);
+            _uow.CardapioRepository.Update(card);
             _uow.Commit();
         }
 
@@ -46,5 +49,7 @@ namespace Aplication.Servico
         {
             _uow.Dispose();
         }
+
+       
     }
 }

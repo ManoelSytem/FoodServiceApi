@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Aplication.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Mvc;
 
 namespace Aplication.Util
 {
@@ -13,6 +15,31 @@ namespace Aplication.Util
             string Jsonvalor = JsonConvert.SerializeObject(obj);
             T novaEntidade = JsonConvert.DeserializeObject<T>(Jsonvalor);
             return novaEntidade;
+        }
+
+        public ActionResultado Resposta(string mensagem, Exception e = null)
+        {
+            ActionResultado actionResult;
+
+
+            if (e != null)
+            {
+                actionResult = new ActionResultado
+                {
+                    Success = "False",
+                    Message = e.Message
+                };
+            }
+            else
+            {
+                actionResult = new ActionResultado
+                {
+                    Success = "True",
+                    Message = mensagem
+                };
+            }
+            
+            return actionResult;
         }
     }
 }
