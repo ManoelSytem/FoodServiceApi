@@ -13,7 +13,6 @@ namespace FoodServiceApi.Model
         [Display(Name = "Nome do produto")]
         public string nome { get; set; }
         public string descricao { get; set; }
-
         public Decimal valor { get; set; }
     }
 }
