@@ -21,9 +21,23 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: LoginController/Details/5
-        public ActionResult Details(int id)
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginModel collection)
         {
-            return View();
+            try
+            {
+                var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
+                Token token = await loginAPI.PostCredentials(collection);
+                HttpContext.Session.SetObject<Token>("Token", token);
+                var SeesionToken = HttpContext.Session.GetObject<Token>("Token");
+                return View();
+            }
+            catch (ApiException ex)
+            {
+                var jsonToList = JsonExeptionResult.ApiResult(ex);
+                return View();
+            }
+           
         }
 
         // GET: LoginController/Create

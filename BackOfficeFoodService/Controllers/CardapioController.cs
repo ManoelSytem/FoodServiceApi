@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackOfficeFoodService.Models;
+using BackOfficeFoodService.Servico;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 
 namespace BackOfficeFoodService.Controllers
 {
@@ -30,10 +33,12 @@ namespace BackOfficeFoodService.Controllers
         // POST: CardapioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(CardapioModel collection)
         {
             try
             {
+                var IcardapioAPI = RestService.For<ICardapioServico>(Servico.Servico.UrlBase());
+                var result = await IcardapioAPI.Post(collection);
                 return RedirectToAction(nameof(Index));
             }
             catch
