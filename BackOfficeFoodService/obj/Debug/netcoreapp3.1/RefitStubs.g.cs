@@ -118,6 +118,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("RegisterUser", new Type[] { typeof(LoginModel) });
             return (Task<Token>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<Usuario> ILoginAPI.Get()
+        {
+            var arguments = new object[] {  };
+            var func = requestBuilder.BuildRestResultFuncForMethod("Get", new Type[] {  });
+            return (Task<Usuario>)func(Client, arguments);
+        }
     }
 }
 

@@ -3,6 +3,9 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+@{
+    await Html.PartialAsync("../Shared/ViewMensagem.cshtml");
+}
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -50,7 +53,6 @@
                         Login
                     </button>
                 </div>
-
             </form>
         </div>
     </div>

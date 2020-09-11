@@ -12,7 +12,7 @@ using Refit;
 
 namespace BackOfficeFoodService.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
         // GET: LoginController
         public ActionResult Index()
@@ -26,18 +26,27 @@ namespace BackOfficeFoodService.Controllers
         {
             try
             {
+              
                 var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
                 Token token = await loginAPI.PostCredentials(collection);
-                HttpContext.Session.SetObject<Token>("Token", token);
-                var SeesionToken = HttpContext.Session.GetObject<Token>("Token");
+                if (token != null)
+                {
+                    if (Convert.ToBoolean(token.authenticated))
+                    {
+                        var usuario = await loginAPI.Get();
+                        HttpContext.Session.SetObject<Usuario>("Usuario", usuario);
+                        HttpContext.Session.SetObject<Token>("Token", token);
+                    }
+                }
                 return View();
             }
             catch (ApiException ex)
             {
                 var jsonToList = JsonExeptionResult.ApiResult(ex);
-                return View();
+                SetFlash(Enum.FlashMessageType.Error, "flashMensagemText");
+                return RedirectToAction(nameof(Index));
             }
-           
+
         }
 
         // GET: LoginController/Create
@@ -49,7 +58,7 @@ namespace BackOfficeFoodService.Controllers
         // POST: LoginController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  async Task<ActionResult> Create(LoginModel collection)
+        public async Task<ActionResult> Create(LoginModel collection)
         {
             try
             {
@@ -57,7 +66,7 @@ namespace BackOfficeFoodService.Controllers
                 Token token = await loginAPI.RegisterUser(collection);
                 return RedirectToAction(nameof(Index));
             }
-            catch(ApiException ex)
+            catch (ApiException ex)
             {
                 var jsonToList = JsonExeptionResult.ApiResult(ex);
                 return View();

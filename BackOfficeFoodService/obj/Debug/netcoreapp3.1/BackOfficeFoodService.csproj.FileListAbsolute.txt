@@ -398,6 +398,7 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\Refit.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\RefitStubs.g.cs
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ViewMensagem.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.csproj.CoreCompileInputs.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.MvcApplicationPartsAssemblyInfo.cache

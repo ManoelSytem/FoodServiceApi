@@ -14,10 +14,9 @@ namespace BackOfficeFoodService.Util
         {
 
         }
-
-        public static List<ResultApi> ApiResult(ApiException ex)
+        public static ResultApi ApiResult(ApiException ex)
         {
-            var jsonToList = JsonConvert.DeserializeObject<List<ResultApi>>(ex.Content.ToString());
+            var jsonToList = JsonConvert.DeserializeObject<ResultApi>(ex.Content.ToString());
             return jsonToList;
         }
     }

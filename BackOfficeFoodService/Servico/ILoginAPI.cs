@@ -13,5 +13,7 @@ namespace BackOfficeFoodService.Servico
         Task<Token> PostCredentials(LoginModel user);
         [Post("/Autoriza/register")]
         Task<Token> RegisterUser(LoginModel user);
+        [Get("/Autoriza/Authenticated")]
+        Task<Usuario> Get();
     }
 }

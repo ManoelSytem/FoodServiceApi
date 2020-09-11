@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BackOfficeFoodService.Models;
+using BackOfficeFoodService.Servico;
 
 namespace BackOfficeFoodService.Controllers
 {
@@ -20,7 +21,15 @@ namespace BackOfficeFoodService.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var SessionUsuario = HttpContext.Session.GetObject<Usuario>("Usuario");
+            if (SessionUsuario != null)
+            {
+                if (SessionUsuario.IsAuthenticated == true)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         public IActionResult Privacy()
