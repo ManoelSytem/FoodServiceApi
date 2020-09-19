@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BackOfficeFoodService.Models;
+using BackOfficeFoodService.Servico;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 
 namespace BackOfficeFoodService.Controllers
 {
-    public class ProdutoController : Controller
+    public class ProdutoController : ControllerBase
     {
         // GET: ProdutoController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            try
+            {
+                if (AutenticanteVerifiy()) { 
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                    var result = await IProduto.GetListProdutoPorCliente(email);
+                    return View(result);
+                }
+                else { return RedirectToAction("index", "login"); }
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
         }
 
         // GET: ProdutoController/Details/5
@@ -24,20 +41,34 @@ namespace BackOfficeFoodService.Controllers
         // GET: ProdutoController/Create
         public ActionResult Create()
         {
-            return View();
+            
+            return AutenticanteRetirect();
         }
 
         // POST: ProdutoController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(ProdutoModel collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    if (AutenticanteVerifiy())
+                    {
+                        collection.valor = Convert.ToDecimal(collection.valorDecimal);
+                        collection.cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                        var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                        var result = await IProduto.Post(collection);
+                        SetFlash(Enum.FlashMessageType.Success, result.Message);
+                        return View();
+                    }
+                }
+                return View();
             }
-            catch
+            catch (Exception ex)
             {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return View();
             }
         }

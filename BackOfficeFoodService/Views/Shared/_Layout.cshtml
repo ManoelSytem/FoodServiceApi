@@ -32,6 +32,7 @@
                                 Produto
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Index">Lista de Produtos</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Create">Cadastrar</a>
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Produto" asp-action="Index">Gerenciar Valor Produto</a>
                             </div>
@@ -55,6 +56,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.mask.min.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

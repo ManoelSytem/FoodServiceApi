@@ -17,6 +17,13 @@ namespace Aplication.Util
             return novaEntidade;
         }
 
+        public List<T> ConvertAutoMapperListJson<T>(IEnumerable<object> obj)
+        {
+            string Jsonvalor = JsonConvert.SerializeObject(obj);
+            List<T> novaEntidade = JsonConvert.DeserializeObject<List<T>>(Jsonvalor);
+            return novaEntidade;
+        }
+
         public ActionResultado Resposta(string mensagem, Exception e = null)
         {
             ActionResultado actionResult;

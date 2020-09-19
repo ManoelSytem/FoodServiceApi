@@ -24,5 +24,16 @@ namespace BackOfficeFoodService.Servico
             string urlBase = config.GetSection("APIServAutenticacao:UrlBase").Value;
             return urlBase;
         }
+
+        public static string UrlBaseFoodService()
+        {
+            var builder = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile($"appsettings.json");
+            var config = builder.Build();
+
+            string urlBase = config.GetSection("APIFoodService:UrlBase").Value;
+            return urlBase;
+        }
     }
 }

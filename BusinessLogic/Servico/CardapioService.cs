@@ -28,6 +28,7 @@ namespace Aplication.Servico
         public void Adicionar(Cardapio card)
         {
             _uow.CardapioRepository.Add(card);
+            _uow.Commit();
         }
         public void CriarListaCardapio(ListaItemProduto listaItemProduto)
         {
@@ -44,6 +45,11 @@ namespace Aplication.Servico
             _uow.CardapioRepository.Update(card);
             _uow.Commit();
         }
+        public IEnumerable<Cardapio> Listar(string cliente)
+        {
+            return _uow.CardapioRepository.Get(p => p.idUser == cliente);
+        }
+
 
         public void Dispose()
         {

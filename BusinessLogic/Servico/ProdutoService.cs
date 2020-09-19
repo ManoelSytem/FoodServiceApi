@@ -24,9 +24,9 @@ namespace Aplication.Servico
             _uow.Commit();
         }
 
-        public IEnumerable<Produto> Listar()
+        public IEnumerable<Produto> Listar(string cliente)
         {
-            return _uow.ProdutoRepository.Get();
+            return _uow.ProdutoRepository.Get(p => p.cliente == cliente);
         }
 
         public void CreateListaPoduto(ListaItemProduto listaItemProduto)

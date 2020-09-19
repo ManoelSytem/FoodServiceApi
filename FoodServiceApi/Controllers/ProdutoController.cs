@@ -26,9 +26,12 @@ namespace FoodServiceApi.Controllers
         }
         // GET: api/<ProdutoController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("GetListProduto")]
+        public List<ProdutoModel> Get(string cliente)
         {
-            return new string[] { "value1", "value2" };
+           var listProduto =  _ProdutoService.Listar(cliente);
+           var listProdutoModel = _JsonAutoMapper.ConvertAutoMapperListJson<ProdutoModel>(listProduto);
+           return listProdutoModel;
         }
 
         // GET api/<ProdutoController>/5

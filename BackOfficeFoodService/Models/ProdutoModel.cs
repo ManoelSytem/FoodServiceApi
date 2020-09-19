@@ -14,6 +14,8 @@ namespace BackOfficeFoodService.Models
         [Display(Name = "Nome do produto")]
         public string nome { get; set; }
         public string descricao { get; set; }
-        public Decimal valor { get; set; }
+        public decimal valor { get; set; }
+        public string valorDecimal { get; set; }
+        public string cliente { get; set; }
     }
 }

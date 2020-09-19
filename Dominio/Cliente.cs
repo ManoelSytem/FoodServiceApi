@@ -12,7 +12,7 @@ namespace Dominio
         public string endereco { get; set; }
         public string contato { get; set; }
         public string email { get; set; }
-        public byte status { get; set; }
+        public string status { get; set; }
         public DateTime dataEntrada { get; set; }
         public DateTime dataUpdate { get; set; }
         public string logo { get; set; }

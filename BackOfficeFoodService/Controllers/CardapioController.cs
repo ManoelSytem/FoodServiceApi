@@ -14,7 +14,7 @@ namespace BackOfficeFoodService.Controllers
     public class CardapioController : ControllerBase
     {
         // GET: CardapioController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             return View();
         }
@@ -26,22 +26,33 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: CardapioController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
-            var Session = HttpContext.Session.GetObject<Usuario>("Usuario");
-            if (Session != null)
+            try
             {
-                if (HttpContext.Session.GetObject<Usuario>("Usuario").IsAuthenticated)
+                if (AutenticanteVerifiy())
                 {
-                    
-                    return View();
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                    var result = await ICardapio.GetListCardapioPorCliente(email);
+                    var cardapioModel = new CardapioModel
+                    {
+                        ListCardapio = result
+                    };
+                    return View(cardapioModel);
                 }
                 else { return RedirectToAction("index", "login"); }
             }
-            else
+            catch (Exception ex)
             {
-                return RedirectToAction("index", "login");
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
             }
+        }
+
+        public async Task<ActionResult> MenuListCardapio()
+        {
+            return View();
         }
 
         // POST: CardapioController/Create
@@ -51,26 +62,19 @@ namespace BackOfficeFoodService.Controllers
         {
             try
             {
-                var IcardapioAPI = RestService.For<ICardapioServico>(Servico.Servico.UrlBase());
-                var Session = HttpContext.Session.GetObject<Usuario>("Usuario");
-                if (Session != null)
+                if (AutenticanteVerifiy())
                 {
-                    if (HttpContext.Session.GetObject<Usuario>("Usuario").IsAuthenticated)
-                    {
-                        collection.idUser = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
-                        var result = await IcardapioAPI.Post(collection);
-                    }
-                }
-                else
-                {
-                    return RedirectToAction("index", "login");
+                    var IcardapioAPI = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                    collection.idUser = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var result = await IcardapioAPI.Post(collection);
+                    SetFlash(Enum.FlashMessageType.Success, result.Message);
+                    return View();
                 }
                 return View();
             }
-            catch (ApiException ex)
+            catch (Exception ex)
             {
-                var jsonToList = JsonExeptionResult.ApiResult(ex);
-                SetFlash(Enum.FlashMessageType.Error,jsonToList.description);
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return View();
             }
         }

@@ -8,11 +8,9 @@ namespace FoodServiceApi.Model
 {
     public class ProdutoModel
     {
-        [Required(ErrorMessage = "Informe o nome do produto.")]
-        [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
-        [Display(Name = "Nome do produto")]
         public string nome { get; set; }
         public string descricao { get; set; }
         public Decimal valor { get; set; }
+        public string cliente { get; set; }
     }
 }

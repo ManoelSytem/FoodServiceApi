@@ -9,7 +9,7 @@ namespace Aplication.Util
     public interface IJsonAutoMapper
     {
         public T ConvertAutoMapperJson<T>(object obj);
-
         public ActionResultado Resposta(string mensagem, Exception e = null);
+        public List<T> ConvertAutoMapperListJson<T>(IEnumerable<object> obj);
     }
 }

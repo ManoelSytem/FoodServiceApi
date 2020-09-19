@@ -30,9 +30,12 @@ namespace FoodServiceApi.Controllers
         }
         // GET: api/<CardapioController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("GetListCardapio")]
+        public List<CardapioModel> Get(string cliente)
         {
-            return new string[] { "value1", "value2" };
+            var listCardapio =  _CardapioService.Listar(cliente);
+            var listCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<CardapioModel>(listCardapio);
+            return listCardapioModel;
         }
 
         // GET api/<CardapioController>/5
@@ -49,19 +52,14 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
                     Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
                     _CardapioService.Adicionar(novoCarpio);
                     return _JsonAutoMapper.Resposta("Cadapio criado com sucesso!");
-                }
             }
             catch (Exception e)
             {
                 return _JsonAutoMapper.Resposta("Falha!",e);
             }
-
-            return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
 
         [HttpPost]

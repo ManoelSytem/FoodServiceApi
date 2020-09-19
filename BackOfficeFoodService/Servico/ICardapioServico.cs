@@ -11,8 +11,10 @@ namespace BackOfficeFoodService.Servico
     public interface ICardapioServico
     {
         [Post("/Cardapio/Create")]
-        Task<ActionResult> Post(CardapioModel cardapioModel);
+        Task<ActionResultado> Post(CardapioModel cardapioModel);
         [Post("/Cardapio/CreateListaCardapio")]
         Task<ActionResult> CreateListaCardapio(ListaModel listaModel);
+        [Get("/Cardapio/GetListCardapio")]
+        Task<List<CardapioModel>> GetListCardapioPorCliente(string cliente);
     }
 }

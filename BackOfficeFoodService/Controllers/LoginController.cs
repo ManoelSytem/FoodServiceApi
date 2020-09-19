@@ -26,24 +26,31 @@ namespace BackOfficeFoodService.Controllers
         {
             try
             {
-              
-                var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
-                Token token = await loginAPI.PostCredentials(collection);
-                if (token != null)
+                var Session = HttpContext.Session.GetObject<Usuario>("Usuario");
+                if (Session == null)
                 {
-                    if (Convert.ToBoolean(token.authenticated))
+                    var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
+                    Token token = await loginAPI.PostCredentials(collection);
+                    if (token != null)
                     {
-                        var usuario = await loginAPI.Get();
-                        HttpContext.Session.SetObject<Usuario>("Usuario", usuario);
-                        HttpContext.Session.SetObject<Token>("Token", token);
+                        if (Convert.ToBoolean(token.authenticated))
+                        {
+                            var usuario = await loginAPI.Get();
+                            HttpContext.Session.SetObject<Usuario>("Usuario", usuario);
+                            HttpContext.Session.SetObject<Token>("Token", token);
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                 }
-                return View();
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                return RedirectToAction(nameof(Index));
             }
-            catch (ApiException ex)
+            catch (Exception ex)
             {
-                var jsonToList = JsonExeptionResult.ApiResult(ex);
-                SetFlash(Enum.FlashMessageType.Error, "flashMensagemText");
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return RedirectToAction(nameof(Index));
             }
 

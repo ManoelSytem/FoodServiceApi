@@ -31,7 +31,7 @@ namespace BackOfficeFoodService
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Name = ".Fiver.Session";
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
             });
         }
 

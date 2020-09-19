@@ -5,28 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
-<h4>Criar cardápio</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="titulo" class="control-label"></label>
-                <input asp-for="titulo" class="form-control" />
-                <span asp-validation-for="titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Criar cardápio</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="titulo" class="control-label"></label>
+                    <input asp-for="titulo" class="form-control" />
+                    <span asp-validation-for="titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <h4>Lista de Cardápios</h4>
+            <hr />
+            <table class="table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.titulo)
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @foreach (var item in Model.ListCardapio)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.titulo)
+                                </td>
+                                <td>
+                                    <a href="#" ; onclick="CreateListCardapio();">Lista de Menu</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
+<div class="modal-body" id="modal-body"></div>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

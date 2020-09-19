@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Aplication.Enum;
+using Aplication.Model;
+using Aplication.Util;
+using BusinessLogic.Servico;
 using Dominio;
 using FoodServiceApi.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +18,13 @@ namespace FoodServiceApi.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
+        private readonly IJsonAutoMapper _JsonAutoMapper;
+        private readonly ClienteService _ClienteService;
+        public ClienteController(IJsonAutoMapper jsonAutoMapper)
+        {
+            _JsonAutoMapper = jsonAutoMapper;
+            _ClienteService = new ClienteService();
+        }
         // GET: api/<ClienteController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -31,11 +42,21 @@ namespace FoodServiceApi.Controllers
         // POST api/<ClienteController>
         [Route("Create")]
         [HttpPost]
-        public BadRequestObjectResult Post(ClienteModel cliente)
+        public ActionResultado Post(ClienteModel clienteModel)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-            return BadRequest("sucesso");
+            try
+            {
+                Cliente Cliente = _JsonAutoMapper.ConvertAutoMapperJson<Cliente>(clienteModel);
+                Cliente.dataEntrada = DateTime.Now;
+                Cliente.dataUpdate = DateTime.Now;
+                Cliente.status = Status.Ativado.ToDescriptionString();
+                _ClienteService.Adicionar(Cliente);
+                return _JsonAutoMapper.Resposta("Dados atualizado com sucesso");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
         }
 
         // PUT api/<ClienteController>/5
