@@ -8,7 +8,7 @@ namespace BackOfficeFoodService.Models
 {
     public class ProdutoModel
     {
-
+        public int codigo { get; set; }
         [Required(ErrorMessage = "Informe o nome do produto.")]
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
         [Display(Name = "Nome do produto")]

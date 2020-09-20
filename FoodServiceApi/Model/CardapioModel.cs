@@ -7,6 +7,7 @@ namespace FoodServiceApi.Model
 {
     public class CardapioModel
     {
+        public int idCardapio { get; set; }
         public string idUser { get; set; }
         public string titulo { get; set; }
     }

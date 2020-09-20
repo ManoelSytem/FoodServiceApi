@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BackOfficeFoodService.Models
 {
     public class CardapioModel
-    {
+    { 
+        public int idCardapio { get; set; }
         public string idUser { get; set; }
         [Required(ErrorMessage = "Informe o nome título do cardápio.")]
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]

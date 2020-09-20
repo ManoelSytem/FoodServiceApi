@@ -1,5 +1,4 @@
 ﻿function CreateListCardapio() {
-    alert("Teste");
     $.ajax({
         url: "/Cardapio/MenuListCardapio",
         type: 'get'

@@ -39,10 +39,13 @@ namespace FoodServiceApi.Controllers
         }
 
         // GET api/<CardapioController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("GetCardapioPorId")]
+        public CardapioModel Get(int id)
         {
-            return "value";
+            var Cardapio = _CardapioService.GetById(id);
+            var CardapioModel = _JsonAutoMapper.ConvertAutoMapperJson<CardapioModel>(Cardapio);
+            return CardapioModel;
         }
 
         // POST api/<CardapioController>

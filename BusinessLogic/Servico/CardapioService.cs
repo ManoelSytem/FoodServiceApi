@@ -47,7 +47,12 @@ namespace Aplication.Servico
         }
         public IEnumerable<Cardapio> Listar(string cliente)
         {
-            return _uow.CardapioRepository.Get(p => p.idUser == cliente);
+            return _uow.CardapioRepository.Get(c => c.idUser == cliente);
+        }
+
+        public Cardapio GetById(int id)
+        {
+            return _uow.CardapioRepository.GetById(c => c.idCardapio == id);
         }
 
 

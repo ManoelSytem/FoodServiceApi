@@ -7,6 +7,7 @@ using BackOfficeFoodService.Servico;
 using BackOfficeFoodService.Util;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Refit;
 
 namespace BackOfficeFoodService.Controllers
@@ -50,8 +51,12 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        public async Task<ActionResult> MenuListCardapio()
+        public async Task<ActionResult> MenuListCardapio(string codcardapio)
         {
+            var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+            var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+            var listProduto = await IProduto.GetListProdutoPorCliente(email);
+            ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
             return View();
         }
 
