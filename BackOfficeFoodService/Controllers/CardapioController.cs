@@ -53,11 +53,40 @@ namespace BackOfficeFoodService.Controllers
 
         public async Task<ActionResult> MenuListCardapio(string codcardapio)
         {
-            var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
-            var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
-            var listProduto = await IProduto.GetListProdutoPorCliente(email);
-            ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
-            return View();
+            try
+            {
+                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var listProduto = await IProduto.GetListProdutoPorCliente(email);
+                ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
+            
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> MenuListCardapioPost(string titulo, string descricao, string[] produtos)
+        {
+            try
+            {
+                throw new NotImplementedException("Teste");
+                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var listProduto = await IProduto.GetListProdutoPorCliente(email);
+                ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
+
         }
 
         // POST: CardapioController/Create
