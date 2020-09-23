@@ -66,25 +66,40 @@ namespace BackOfficeFoodService.Controllers
                 SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return View();
             }
-            
+
         }
 
         [HttpPost]
-        public async Task<ActionResult> MenuListCardapioPost(string titulo, string descricao, string[] produtos)
+        public async Task<ResultApi> MenuListCardapio(string titulo, string descricao, string[] produtos)
         {
             try
             {
-                throw new NotImplementedException("Teste");
-                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
-                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
-                var listProduto = await IProduto.GetListProdutoPorCliente(email);
-                ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
-                return View();
+                if (!String.IsNullOrEmpty(titulo) & produtos.Length > 0)
+                {
+                    int[] mylistProd = Array.ConvertAll(produtos, s => int.Parse(s));
+
+                    var listCardapio = new ListaModel { codigoCardapio = 0, titulo = titulo, descricao = descricao,
+                        ListCodProduto = mylistProd.ToList()};
+
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                    var response = await ICardapio.PostListCardapio(listCardapio);
+                    var result = new ResultApi { description = response.Message, erro = false };
+                    return result;
+
+                }
+                else
+                {
+                    var resultado = new ResultApi { description = "Título do menu e produtos obrigatorio" };
+                    return resultado;
+
+                }
+               
             }
             catch (Exception ex)
             {
-                SetFlash(Enum.FlashMessageType.Error, ex.Message);
-                return View();
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
             }
 
         }

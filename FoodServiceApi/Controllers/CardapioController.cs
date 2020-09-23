@@ -71,15 +71,13 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
                     ProdutoNegocio produtoNegocio = new ProdutoNegocio();
                     ListaItemProduto litaItemProduto = _JsonAutoMapper.ConvertAutoMapperJson<ListaItemProduto>(listaCardapioItemPodutoModel);
                     List<ListaItemProduto> ListaCardapio = new List<ListaItemProduto>();
                     produtoNegocio.VerificaListaDeProdutoExiste(listaCardapioItemPodutoModel.ListCodProduto);
                     _CardapioService.CriarListaCardapio(litaItemProduto);
                     return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
-                }
+                
             }
             catch (Exception e)
             {

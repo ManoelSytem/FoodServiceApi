@@ -45,7 +45,7 @@
                                     @Html.DisplayFor(modelItem => item.titulo)
                                 </td>
                                 <td>
-                                    <a href="#" ; onclick="CreateListCardapio();">Lista de Menu</a>
+                                    <a href="#" ; onclick="CreateListCardapio('@item.idCardapio', '@item.titulo');">Lista de Menu</a>
                                 </td>
                             </tr>
                         }

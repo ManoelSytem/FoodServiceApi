@@ -67,19 +67,19 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
-        Task<ActionResult> ICardapioServico.CreateListaCardapio(ListaModel listaModel)
-        {
-            var arguments = new object[] { listaModel };
-            var func = requestBuilder.BuildRestResultFuncForMethod("CreateListaCardapio", new Type[] { typeof(ListaModel) });
-            return (Task<ActionResult>)func(Client, arguments);
-        }
-
-        /// <inheritdoc />
         Task<List<CardapioModel>> ICardapioServico.GetListCardapioPorCliente(string cliente)
         {
             var arguments = new object[] { cliente };
             var func = requestBuilder.BuildRestResultFuncForMethod("GetListCardapioPorCliente", new Type[] { typeof(string) });
             return (Task<List<CardapioModel>>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> ICardapioServico.PostListCardapio(ListaModel listModel)
+        {
+            var arguments = new object[] { listModel };
+            var func = requestBuilder.BuildRestResultFuncForMethod("PostListCardapio", new Type[] { typeof(ListaModel) });
+            return (Task<ActionResultado>)func(Client, arguments);
         }
     }
 }

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Menu Lista";
     Layout = null;
 }
-
+@await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
 <div class="container">
     <div class="row">
         <div class="col">
@@ -30,7 +30,7 @@
                                     @Html.DropDownList("SelectProduto", (MultiSelectList)ViewBag.ProdutoList, new { @multiple = "multiple", @class = "form-control" })
                                 </div>
                                 <div class="form-group">
-                                    <input type="button" value="Salvar" onclick="SalveCacheList()" class="btn btn-primary" />
+                                    <input type="button" value="Salvar" onclick="SalveMenuListCardapio()" class="btn btn-primary" />
                                 </div>
                             </form>
                         </div>
@@ -39,8 +39,9 @@
             </div>
         </div>
         <div class="col">
+            <h4 id="MenuCadapio"></h4>
             <div class="card">
-                <h5 class="card-header" style="background-color: #ff6a00;">Bebidas : descrição: Bebidas quentes e ferias </h5>
+                <h5 class="card-header" style="background-color:#ff6a00;">Bebidas : descrição: Bebidas quentes e ferias </h5>
                 <div class="card-body">
                     </ul>
                 </div>

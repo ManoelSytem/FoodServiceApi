@@ -1,28 +1,35 @@
-﻿function CreateListCardapio() {
+﻿function CreateListCardapio(idcardapio, tituloCardapio) {
+
+    var idCaradpio = idcardapio;
+    var tituloCardapio = tituloCardapio;
+
     $.ajax({
         url: "/Cardapio/MenuListCardapio",
         type: 'get'
     }).done(function (data) {
         $("#modal-body").html(data);
+        $("#MenuCadapio").text("Cadápio Selecionado : "+tituloCardapio);
     }).fail(function () {
-        alert("Ocorreu um erro tente novamente");
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
     });;
 }
 
-function SalveCacheList() {
-
+function SalveMenuListCardapio() {
     var titulo = $('#tituloMenu').val();
     var descricao = $('#descricao').val();
     var SelectProdutos = $('#SelectProduto').val();
   
     $.ajax({
-        url: "/Cardapio/MenuListCardapioPost",
+        url: "/Cardapio/MenuListCardapio",
         type: 'post',
         data: { titulo: titulo, descricao: descricao, produtos: SelectProdutos },
     }).done(function (data) {
-        $("#modal-body").html(data);
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['description']);
     }).fail(function (data) {
-        alert("Ocorreu um erro: " + data['responseText'] );
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
     });;
 }
 
