@@ -51,7 +51,7 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        public async Task<ActionResult> MenuListCardapio(string codcardapio)
+        public async Task<ActionResult> MenuListCardapio()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace BackOfficeFoodService.Controllers
         }
 
         [HttpPost]
-        public async Task<ResultApi> MenuListCardapio(string titulo, string descricao, string[] produtos)
+        public async Task<ResultApi> MenuListCardapio(int idCardapio, string titulo, string descricao, string[] produtos)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace BackOfficeFoodService.Controllers
                 {
                     int[] mylistProd = Array.ConvertAll(produtos, s => int.Parse(s));
 
-                    var listCardapio = new ListaModel { codigoCardapio = 0, titulo = titulo, descricao = descricao,
+                    var listCardapio = new ListaModel { codigoCardapio = idCardapio, titulo = titulo, descricao = descricao,
                         ListCodProduto = mylistProd.ToList()};
 
                     var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;

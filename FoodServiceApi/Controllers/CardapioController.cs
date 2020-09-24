@@ -67,15 +67,19 @@ namespace FoodServiceApi.Controllers
 
         [HttpPost]
         [Route("CreateListaCardapio")]
-        public ActionResultado AddListaItemProduto(ListaModel listaCardapioItemPodutoModel)
+        public ActionResultado AddListaItemProduto(ListaModel cardapioMenu)
         {
             try
             {
                     ProdutoNegocio produtoNegocio = new ProdutoNegocio();
-                    ListaItemProduto litaItemProduto = _JsonAutoMapper.ConvertAutoMapperJson<ListaItemProduto>(listaCardapioItemPodutoModel);
-                    List<ListaItemProduto> ListaCardapio = new List<ListaItemProduto>();
-                    produtoNegocio.VerificaListaDeProdutoExiste(listaCardapioItemPodutoModel.ListCodProduto);
-                    _CardapioService.CriarListaCardapio(litaItemProduto);
+                    CardapoNegocio cardapioNegocio = new CardapoNegocio();
+
+                    produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
+                    var listMenuCardapio  = cardapioNegocio.MontarListaMenuCardapio(cardapioMenu.codigoCardapio, cardapioMenu.titulo, cardapioMenu.descricao, cardapioMenu.ListCodProduto);
+                    
+                    foreach(ListaItemProduto item in listMenuCardapio)
+                    _CardapioService.CriarListaCardapio(item);
+
                     return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
                 
             }

@@ -2,13 +2,14 @@
 
     var idCaradpio = idcardapio;
     var tituloCardapio = tituloCardapio;
-
+     
     $.ajax({
         url: "/Cardapio/MenuListCardapio",
         type: 'get'
     }).done(function (data) {
         $("#modal-body").html(data);
-        $("#MenuCadapio").text("Cadápio Selecionado : "+tituloCardapio);
+        $("#MenuCadapio").text("Cadápio Selecionado : " + tituloCardapio);
+        $("#custId").val(idCaradpio);
     }).fail(function () {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -16,6 +17,8 @@
 }
 
 function SalveMenuListCardapio() {
+
+    var idcardapio = $("#custId").val();
     var titulo = $('#tituloMenu').val();
     var descricao = $('#descricao').val();
     var SelectProdutos = $('#SelectProduto').val();
@@ -23,7 +26,7 @@ function SalveMenuListCardapio() {
     $.ajax({
         url: "/Cardapio/MenuListCardapio",
         type: 'post',
-        data: { titulo: titulo, descricao: descricao, produtos: SelectProdutos },
+        data: { idCardapio: idcardapio, titulo: titulo, descricao: descricao, produtos: SelectProdutos },
     }).done(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['description']);
