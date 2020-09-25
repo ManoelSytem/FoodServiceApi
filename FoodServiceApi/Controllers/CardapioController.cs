@@ -91,6 +91,16 @@ namespace FoodServiceApi.Controllers
             return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
 
+
+        [HttpGet]
+        [Route("GetListMenuCardapioPorId")]
+        public List<ListaModel> GetListMenu(int idCardapio)
+        {
+            var listaMenuCardapio = _CardapioService.ObterListaMenuCardapioPorId(idCardapio);
+            var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<ListaModel>(listaMenuCardapio);
+            return listMenuCardapioModel;
+        }
+
         // DELETE api/<CardapioController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)

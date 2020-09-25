@@ -13,5 +13,8 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> Post(ProdutoModel produtoModel);
         [Get("/Produto/GetListProduto")]
         Task<List<ProdutoModel>> GetListProdutoPorCliente(string cliente);
+        [Get("/Produto/GetListProdutoPorListaProduto")]
+        Task<List<ProdutoModel>> GetListProdutoPorListProduto(List<int> listProduto);
+       
     }
 }

@@ -51,14 +51,15 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        public async Task<ActionResult> MenuListCardapio()
+        public async Task<ActionResult> MenuListCardapio(int idCardapio)
         {
             try
             {
                 var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                 var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
-                var listProduto = await IProduto.GetListProdutoPorCliente(email);
-                ViewBag.ProdutoList = new MultiSelectList(listProduto, "codigo", "nome");
+                var listProdutoCliente = await IProduto.GetListProdutoPorCliente(email);
+                var listProdutoPorCardapioCliente = await IProduto.GetListProdutoPorCliente(email);
+                ViewBag.ProdutoList = new MultiSelectList(listProdutoCliente, "codigo", "nome");
                 return View();
             }
             catch (Exception ex)
@@ -104,8 +105,17 @@ namespace BackOfficeFoodService.Controllers
 
         }
 
-        // POST: CardapioController/Create
-        [HttpPost]
+        [HttpGet]
+        public async Task<List<ListaModel>> BuscarMenuListaCardapio(int idCardapio)
+        {
+                var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                var response = await ICardapio.GetListMenuCardapioPorId(idCardapio);
+                return response;
+        }
+
+
+            // POST: CardapioController/Create
+            [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CardapioModel collection)
         {

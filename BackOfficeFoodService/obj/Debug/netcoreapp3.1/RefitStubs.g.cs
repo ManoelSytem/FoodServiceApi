@@ -81,6 +81,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("PostListCardapio", new Type[] { typeof(ListaModel) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<List<ListaModel>> ICardapioServico.GetListMenuCardapioPorId(int IdCardapio)
+        {
+            var arguments = new object[] { IdCardapio };
+            var func = requestBuilder.BuildRestResultFuncForMethod("GetListMenuCardapioPorId", new Type[] { typeof(int) });
+            return (Task<List<ListaModel>>)func(Client, arguments);
+        }
     }
 }
 
@@ -214,6 +222,14 @@ namespace BackOfficeFoodService.Servico
         {
             var arguments = new object[] { cliente };
             var func = requestBuilder.BuildRestResultFuncForMethod("GetListProdutoPorCliente", new Type[] { typeof(string) });
+            return (Task<List<ProdutoModel>>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<List<ProdutoModel>> IProdutoServico.GetListProdutoPorListProduto(List<int> listProduto)
+        {
+            var arguments = new object[] { listProduto };
+            var func = requestBuilder.BuildRestResultFuncForMethod("GetListProdutoPorListProduto", new Type[] { typeof(List<int>) });
             return (Task<List<ProdutoModel>>)func(Client, arguments);
         }
     }

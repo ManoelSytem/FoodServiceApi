@@ -14,6 +14,7 @@ namespace BackOfficeFoodService.Models
         [Display(Name = "Titulo")]
         public string titulo { get; set; }
         public string descricao { get; set; }
+        public string codProduto { get; set; }
         public List<int> ListCodProduto { get; set; }
     }
 }

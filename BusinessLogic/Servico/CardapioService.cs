@@ -33,6 +33,11 @@ namespace Aplication.Servico
         public void CriarListaCardapio(ListaItemProduto listaItemProduto)
         {
             _uow.ProdutoItemRepository.Add(listaItemProduto);
+            _uow.Commit();
+        }
+        public IEnumerable<ListaItemProduto> ObterListaMenuCardapioPorId(int IdCardapio)
+        {
+            return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio);
         }
         public void Excluir(Cardapio card)
         {

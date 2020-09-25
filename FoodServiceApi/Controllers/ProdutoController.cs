@@ -34,6 +34,15 @@ namespace FoodServiceApi.Controllers
            return listProdutoModel;
         }
 
+        [HttpGet]
+        [Route("GetListProdutoPorListaProduto")]
+        public List<ProdutoModel> GetListProdutoPorListProduto(List<int> listProduto)
+        {
+            var listProdutos = _ProdutoService.ObterListaProdutoPorIdProduto(listProduto);
+            var listProdutoModel = _JsonAutoMapper.ConvertAutoMapperListJson<ProdutoModel>(listProdutos);
+            return listProdutoModel;
+        }
+
         // GET api/<ProdutoController>/5
         [HttpGet("{id}")]
         public string Get(int id)

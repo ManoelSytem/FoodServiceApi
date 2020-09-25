@@ -2,6 +2,7 @@
 using InfraEstrutura.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Aplication.Servico
@@ -29,6 +30,11 @@ namespace Aplication.Servico
             return _uow.ProdutoRepository.Get(p => p.cliente == cliente);
         }
 
+        public IEnumerable<Produto> ObterListaProdutoPorIdProduto(List<int> idProduto)
+        {
+            return _uow.ProdutoRepository.Get().Where(p => idProduto.Contains(p.codigo));
+        }
+
         public void CreateListaPoduto(ListaItemProduto listaItemProduto)
         {
              _uow.ProdutoItemRepository.Add(listaItemProduto);
@@ -39,6 +45,8 @@ namespace Aplication.Servico
         {
            return  _uow.ProdutoRepository.GetById(p => p.codigo == codigoProduto);
         }
+
+       
 
         public void Dispose()
         {
