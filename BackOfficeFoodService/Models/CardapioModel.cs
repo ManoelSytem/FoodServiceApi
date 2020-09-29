@@ -15,7 +15,7 @@ namespace BackOfficeFoodService.Models
         [Display(Name = "Título do cardápio")]
         public string titulo { get; set; }
         public IEnumerable<CardapioModel> ListCardapio { get; set; }
-        public IEnumerable<ListaModel> ListMenu { get; set; }
+        public IEnumerable<MenuModel> ListMenu { get; set; }
 
     }
 }

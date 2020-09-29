@@ -17,5 +17,17 @@ namespace BackOfficeFoodService.Models
         public decimal valor { get; set; }
         public string valorDecimal { get; set; }
         public string cliente { get; set; }
+
+        public static List<int> ObterListaIdProduto(List<MenuModel> listaCardapio)
+        {
+            List<int> listProduto = new List<int>();
+            foreach (MenuModel lc in listaCardapio)
+            {
+                listProduto.Add(Convert.ToInt32(lc.codProduto));
+            }
+
+            return listProduto;
+        }
     }
+    
 }

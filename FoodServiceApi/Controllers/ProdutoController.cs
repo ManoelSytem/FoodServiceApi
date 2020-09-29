@@ -34,7 +34,7 @@ namespace FoodServiceApi.Controllers
            return listProdutoModel;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetListProdutoPorListaProduto")]
         public List<ProdutoModel> GetListProdutoPorListProduto(List<int> listProduto)
         {

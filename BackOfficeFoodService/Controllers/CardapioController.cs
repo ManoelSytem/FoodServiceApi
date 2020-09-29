@@ -79,8 +79,13 @@ namespace BackOfficeFoodService.Controllers
                 {
                     int[] mylistProd = Array.ConvertAll(produtos, s => int.Parse(s));
 
-                    var listCardapio = new ListaModel { codigoCardapio = idCardapio, titulo = titulo, descricao = descricao,
-                        ListCodProduto = mylistProd.ToList()};
+                    var listCardapio = new MenuModel
+                    {
+                        codigoCardapio = idCardapio,
+                        titulo = titulo,
+                        descricao = descricao,
+                        ListCodProduto = mylistProd.ToList()
+                    };
 
                     var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                     var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
@@ -95,7 +100,7 @@ namespace BackOfficeFoodService.Controllers
                     return resultado;
 
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -106,16 +111,36 @@ namespace BackOfficeFoodService.Controllers
         }
 
         [HttpGet]
-        public async Task<List<ListaModel>> BuscarMenuListaCardapio(int idCardapio)
+        public async Task<CardapioModel> BuscarMenuListaCardapio(int idCardapio)
         {
+            try
+            {
+
                 var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
-                var response = await ICardapio.GetListMenuCardapioPorId(idCardapio);
-                return response;
+                var responseListMenu = await ICardapio.GetListMenuCardapioPorId(idCardapio);
+                
+                var ListaProduto = ProdutoModel.ObterListaIdProduto(responseListMenu);
+                var IProdutoServico = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var ListProdutoModel = await IProdutoServico.GetListProdutoPorListProduto(ListaProduto);
+                //Refetora padrão repository
+                var ListDeMenuComProdutos = MenuModel.ObterListaDeMenuComListaDeProduto(responseListMenu, ListProdutoModel);
+                
+                return new CardapioModel
+                {
+                    ListMenu = ListDeMenuComProdutos,
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
 
-            // POST: CardapioController/Create
-            [HttpPost]
+        // POST: CardapioController/Create
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(CardapioModel collection)
         {

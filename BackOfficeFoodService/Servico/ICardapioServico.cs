@@ -15,9 +15,9 @@ namespace BackOfficeFoodService.Servico
         [Get("/Cardapio/GetListCardapio")]
         Task<List<CardapioModel>> GetListCardapioPorCliente(string cliente);
         [Post("/Cardapio/CreateListaCardapio")]
-        Task<ActionResultado> PostListCardapio(ListaModel listModel);
+        Task<ActionResultado> PostListCardapio(MenuModel listModel);
         [Get("/Cardapio/GetListMenuCardapioPorId")]
-        Task<List<ListaModel>> GetListMenuCardapioPorId(int IdCardapio);
+        Task<List<MenuModel>> GetListMenuCardapioPorId(int IdCardapio);
 
     }
 }
