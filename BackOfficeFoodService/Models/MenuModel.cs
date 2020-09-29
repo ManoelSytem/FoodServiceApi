@@ -16,7 +16,7 @@ namespace BackOfficeFoodService.Models
         [Display(Name = "Titulo")]
         public string titulo { get; set; }
         public string descricao { get; set; }
-        public string codProduto { get; set; }
+        public int codProduto { get; set; }
         public List<int> ListCodProduto { get; set; }
         public List<ProdutoModel> ListProduto { get; set; }
 
@@ -29,7 +29,7 @@ namespace BackOfficeFoodService.Models
             foreach (var item in listaDistinc.ToList())
             {
                 var query = from listMenu in responseListMenu
-                            join prod in ListProdutoModel on listMenu.codProduto equals Convert.ToString(prod.codigo)
+                            join prod in ListProdutoModel on listMenu.codProduto equals prod.codigo
                             where listMenu.titulo == item.Key.titulo
                             select new ProdutoModel()
                             {

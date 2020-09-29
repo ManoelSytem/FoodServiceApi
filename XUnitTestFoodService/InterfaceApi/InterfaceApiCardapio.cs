@@ -14,6 +14,6 @@ namespace XUnitTestFoodService.InterfaceApi
         Task<ActionResultado> CreateCardapioAsync(CardapioModel model);
 
         [Post("/api/Cardapio/CreateListaCardapio")]
-        Task<ActionResultado> CreateListaCardapioAsync(ListaModel model);
+        Task<ActionResultado> CreateListaCardapioAsync(MenuModel model);
     }
 }

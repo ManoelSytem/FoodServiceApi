@@ -67,7 +67,7 @@ namespace FoodServiceApi.Controllers
 
         [HttpPost]
         [Route("CreateListaCardapio")]
-        public ActionResultado AddListaItemProduto(ListaModel cardapioMenu)
+        public ActionResultado AddListaItemProduto(MenuModel cardapioMenu)
         {
             try
             {
@@ -94,10 +94,10 @@ namespace FoodServiceApi.Controllers
 
         [HttpGet]
         [Route("GetListMenuCardapioPorId")]
-        public List<ListaModel> GetListMenu(int idCardapio)
+        public List<MenuModel> GetListMenu(int idCardapio)
         {
             var listaMenuCardapio = _CardapioService.ObterListaMenuCardapioPorId(idCardapio);
-            var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<ListaModel>(listaMenuCardapio);
+            var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<MenuModel>(listaMenuCardapio);
             return listMenuCardapioModel;
         }
 

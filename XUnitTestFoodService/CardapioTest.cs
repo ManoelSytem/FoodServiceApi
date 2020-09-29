@@ -41,7 +41,7 @@ namespace XUnitTestFoodService
         {
 
             //Arrage
-            var listaCardapio = new ListaModel();
+            var listaCardapio = new MenuModel();
             listaCardapio.codigoCardapio = 1;
             listaCardapio.titulo = "Bebidas";
             listaCardapio.descricao = "Bebida alcoólica e referigerantes";

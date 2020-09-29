@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FoodServiceApi.Model
 {
-    public class ListaModel
+    public class MenuModel
     {
         public int codigoCardapio { get; set; }
         public string titulo { get; set; }
