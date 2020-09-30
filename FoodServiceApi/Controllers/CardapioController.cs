@@ -76,8 +76,9 @@ namespace FoodServiceApi.Controllers
 
                     produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
                     var listMenuCardapio  = cardapioNegocio.MontarListaMenuCardapio(cardapioMenu.codigoCardapio, cardapioMenu.titulo, cardapioMenu.descricao, cardapioMenu.ListCodProduto);
-                    
-                    foreach(ListaItemProduto item in listMenuCardapio)
+                    cardapioNegocio.VerificaProdutoAdicionadoMenuLista(listMenuCardapio);
+                 
+                     foreach (ListaItemProduto item in listMenuCardapio)
                     _CardapioService.CriarListaCardapio(item);
 
                     return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");

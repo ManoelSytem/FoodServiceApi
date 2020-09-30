@@ -39,6 +39,11 @@ namespace InfraEstrutura.Repository
             return _context.Set<T>().Single(predicate);
         }
 
+        public T GetByIdFind(Expression<Func<T, bool>> predicate)
+        {
+            return _context.Set<T>().FirstOrDefault(predicate);
+        }
+
         public void Update(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;

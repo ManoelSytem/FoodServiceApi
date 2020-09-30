@@ -40,6 +40,11 @@ namespace Aplication.Repository
             throw new NotImplementedException();
         }
 
+        public Cardapio GetByIdFind(Expression<Func<Cardapio, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Cardapio entity)
         {
             throw new NotImplementedException();

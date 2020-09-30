@@ -67,10 +67,10 @@ namespace XUnitTestFoodService.InterfaceApi
         }
 
         /// <inheritdoc />
-        Task<ActionResultado> InterfaceApiCardapio.CreateListaCardapioAsync(ListaModel model)
+        Task<ActionResultado> InterfaceApiCardapio.CreateListaCardapioAsync(MenuModel model)
         {
             var arguments = new object[] { model };
-            var func = requestBuilder.BuildRestResultFuncForMethod("CreateListaCardapioAsync", new Type[] { typeof(ListaModel) });
+            var func = requestBuilder.BuildRestResultFuncForMethod("CreateListaCardapioAsync", new Type[] { typeof(MenuModel) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
     }

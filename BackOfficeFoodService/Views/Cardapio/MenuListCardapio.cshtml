@@ -27,7 +27,7 @@
                                     <span asp-validation-for="descricao" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="SelecaoDeProdutos">Selecione mutiplos produtos para a lista desejada</label>
+                                    <label for="SelecaoDeProdutos">Selecione mutiplos produtos para o Menu desejado.</label>
                                     @Html.DropDownList("SelectProduto", (MultiSelectList)ViewBag.ProdutoList, new { @multiple = "multiple", @class = "form-control" })
                                 </div>
                                 <div class="form-group">
@@ -40,6 +40,8 @@
             </div>
         </div>
         <div id="ListMenu" class="col">
+            <h4 id="MenuCadapio"></h4>
+            <div id="Menu"></div>
         </div>
 
 

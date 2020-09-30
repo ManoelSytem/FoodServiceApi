@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Aplication.Servico;
+using Dominio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,6 +30,27 @@ namespace Aplication.Negocio
             }
 
             return novaLista;
+        }
+
+        public void VerificaProdutoAdicionadoMenuLista(List<ListaItemProduto> ListaMenu)
+        {
+            try
+            {
+                CardapioService cardapioService = new CardapioService();
+                foreach (ListaItemProduto menu in ListaMenu)
+                {
+                    var itemMenu = cardapioService.ObterItemMenu(menu.codProduto, menu.codigoCardapio);
+                    if(itemMenu != null)
+                    {
+                        throw new NotImplementedException("O Produto de código "+itemMenu.codProduto+", já foi adicionando no menu "+itemMenu.titulo+", favor verificar.");
+                    }
+;                }
+
+            }
+            catch (Exception e)
+            {
+                throw new NotImplementedException(e.Message);
+            }
         }
     }
 }

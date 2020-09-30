@@ -47,5 +47,10 @@ namespace BusinessLogic.Repository
         {
             throw new NotImplementedException();
         }
+
+        public Cliente GetByIdFind(Expression<Func<Cliente, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

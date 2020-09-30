@@ -1,7 +1,10 @@
-﻿function CreateListCardapio(idcardapio, tituloCardapio) {
+﻿var TituloGlobalSalvar = '';
 
+function CreateListCardapio(idcardapio, tituloCardapio) {
+    TituloGlobalSalvar = '';
     var idCaradpio = idcardapio;
     var tituloCardapio = tituloCardapio;
+    TituloGlobalSalvar = tituloCardapio;
 
     $.ajax({
         url: "/Cardapio/MenuListCardapio",
@@ -34,6 +37,7 @@ function SalveMenuListCardapio() {
     }).done(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['description']);
+        buscaListaCardapio(idcardapio, "");
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -50,8 +54,8 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
         async: true,
     }).done(function (data) {
         var ListaMenuHtml = ObjetoHtmlMenuList(data);
-        $("#ListMenu").html(ListaMenuHtml);
-        $("#MenuCadapio").text("Cadápio Selecionado : " + tituloCardapio);
+        $("#Menu").html(ListaMenuHtml);
+        $("#MenuCadapio").text("Cadápio Selecionado : " + TituloGlobalSalvar);
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -70,7 +74,7 @@ function ObjetoHtmlMenuList(cardapio) {
         }
 
 
-        html += '<h4 id="MenuCadapio"></h4>' +
+        html +=
             '<div class="card">' +
             '<h5 id="TituloMenu" class="card-header" style="background-color:#ff6a00;">' +
             cardapio['listMenu'][i].titulo +
@@ -87,6 +91,8 @@ function ObjetoHtmlMenuList(cardapio) {
             '</div>' +
             '</div>' +
             '</div>';
+
+        listProdud = '';
 
     }
 

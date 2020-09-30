@@ -66,6 +66,10 @@ namespace Aplication.Servico
             _uow.Dispose();
         }
 
-       
+        public ListaItemProduto ObterItemMenu(int codProduto, int codCardapio)
+        {
+            return _uow.ProdutoItemRepository.GetByIdFind(p => p.codProduto == codProduto && p.codigoCardapio == codCardapio);
+        }
+
     }
 }

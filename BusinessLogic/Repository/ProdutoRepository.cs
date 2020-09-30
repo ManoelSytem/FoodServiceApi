@@ -48,5 +48,10 @@ namespace Aplication.Repository
         {
             throw new NotImplementedException();
         }
+
+        public Produto GetByIdFind(Expression<Func<Produto, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -42,6 +42,11 @@ namespace Aplication.Repository
             throw new NotImplementedException();
         }
 
+        public ListaItemProduto GetByIdFind(Expression<Func<ListaItemProduto, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(ListaItemProduto entity)
         {
             throw new NotImplementedException();
