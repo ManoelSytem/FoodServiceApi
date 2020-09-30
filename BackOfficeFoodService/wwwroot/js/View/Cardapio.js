@@ -55,7 +55,7 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
     }).done(function (data) {
         var ListaMenuHtml = ObjetoHtmlMenuList(data);
         $("#Menu").html(ListaMenuHtml);
-        $("#MenuCadapio").text("Cadápio Selecionado : " + TituloGlobalSalvar);
+        $("#MenuCadapio").text("Cardápio Selecionado : " + TituloGlobalSalvar);
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -70,7 +70,7 @@ function ObjetoHtmlMenuList(cardapio) {
 
     for (var i = 0; i < cardapio['listMenu'].length; i++) {
         for (var j = 0; j < cardapio['listMenu'][i]['listProduto'].length; j++) {
-           listProdud += '<a class="dropdown-item" href="#">' + cardapio['listMenu'][i]['listProduto'][j].nome + '</a>';
+            listProdud += '<a class="dropdown-item" href="#">' + cardapio['listMenu'][i]['listProduto'][j].nome + '</a>';
         }
 
 
@@ -80,13 +80,23 @@ function ObjetoHtmlMenuList(cardapio) {
             cardapio['listMenu'][i].titulo +
             '</h5>' +
             '<div class="card-body">' +
-            '<p class="card-text">'+cardapio['listMenu'][i].descricao+'</p>'+
+            '<p class="card-text">' + cardapio['listMenu'][i].descricao + '</p>' +
+            '<div class="row">' +
+            '<div class="col">' +
             '<div class="dropdown show">' +
             '<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
             'Produtos' +
             '</a>' +
             '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">' +
             listProdud +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-md-2">' +
+            '<button type="button" class="btn btn-primary">Alterar</button>' +
+            '</div>' +
+            '<div class="col col-lg-2">' +
+            '<button type="button" class="btn btn-danger">Excluir</button>' +
             '</div>' +
             '</div>' +
             '</div>' +
