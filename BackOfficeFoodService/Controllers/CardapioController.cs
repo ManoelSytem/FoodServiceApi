@@ -115,7 +115,6 @@ namespace BackOfficeFoodService.Controllers
         {
             try
             {
-
                 var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
                 var responseListMenu = await ICardapio.GetListMenuCardapioPorId(idCardapio);
                 
@@ -163,46 +162,26 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        // GET: CardapioController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: CardapioController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpDelete]
+        public async Task<ResultApi> DeleteMenuListaCardapio(string codMenuSeq)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                    var response = await ICardapio.DeleleteListaMenu(codMenuSeq);
+                    var result = new ResultApi { description = response.Message, erro = false };
+                    return result;
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
             }
+
         }
 
-        // GET: CardapioController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CardapioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

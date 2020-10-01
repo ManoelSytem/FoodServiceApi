@@ -89,6 +89,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("GetListMenuCardapioPorId", new Type[] { typeof(int) });
             return (Task<List<MenuModel>>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<ActionResultado> ICardapioServico.DeleleteListaMenu(string codMenuSeq)
+        {
+            var arguments = new object[] { codMenuSeq };
+            var func = requestBuilder.BuildRestResultFuncForMethod("DeleleteListaMenu", new Type[] { typeof(string) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
     }
 }
 

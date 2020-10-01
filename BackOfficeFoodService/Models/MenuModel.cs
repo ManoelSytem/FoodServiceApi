@@ -15,6 +15,7 @@ namespace BackOfficeFoodService.Models
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
         [Display(Name = "Titulo")]
         public string titulo { get; set; }
+        public string codMenuSeq { get; set; }
         public string descricao { get; set; }
         public int codProduto { get; set; }
         public List<int> ListCodProduto { get; set; }
@@ -23,7 +24,7 @@ namespace BackOfficeFoodService.Models
 
         public static List<MenuModel> ObterListaDeMenuComListaDeProduto(List<MenuModel> responseListMenu, List<ProdutoModel> ListProdutoModel)
         {
-            var listaDistinc = responseListMenu.GroupBy(i => new MenuModel { titulo = i.titulo, descricao = i.descricao }).Distinct();
+            var listaDistinc = responseListMenu.GroupBy(i => new MenuModel { titulo = i.titulo, descricao = i.descricao, codMenuSeq = i.codMenuSeq }).Distinct();
             
             List<MenuModel> listaDeMenu = new List<MenuModel>();
             foreach (var item in listaDistinc.ToList())
@@ -36,6 +37,7 @@ namespace BackOfficeFoodService.Models
                                 codigo = prod.codigo,
                                 nome = prod.nome,
                                 valor = prod.valor
+                            
                             };
 
                 item.Key.ListProduto = query.ToList();

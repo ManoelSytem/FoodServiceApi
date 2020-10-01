@@ -6,6 +6,7 @@ using System.Web.Helpers;
 using Aplication.Interface;
 using Aplication.Model;
 using Aplication.Negocio;
+using Aplication.Repository;
 using Aplication.Servico;
 using Aplication.Util;
 using Dominio;
@@ -23,17 +24,20 @@ namespace FoodServiceApi.Controllers
     {
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly CardapioService _CardapioService;
+        private readonly ProdutoItemRepository _ProdutoItemRepository;
+
         public CardapioController(IJsonAutoMapper JsonAutoMapper)
         {
             _JsonAutoMapper = JsonAutoMapper;
             _CardapioService = new CardapioService();
+            _ProdutoItemRepository = new ProdutoItemRepository();
         }
         // GET: api/<CardapioController>
         [HttpGet]
         [Route("GetListCardapio")]
         public List<CardapioModel> Get(string cliente)
         {
-            var listCardapio =  _CardapioService.Listar(cliente);
+            var listCardapio = _CardapioService.Listar(cliente);
             var listCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<CardapioModel>(listCardapio);
             return listCardapioModel;
         }
@@ -55,13 +59,13 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                    Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
-                    _CardapioService.Adicionar(novoCarpio);
-                    return _JsonAutoMapper.Resposta("Cadapio criado com sucesso!");
+                Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
+                _CardapioService.Adicionar(novoCarpio);
+                return _JsonAutoMapper.Resposta("Cardapio criado com sucesso!");
             }
             catch (Exception e)
             {
-                return _JsonAutoMapper.Resposta("Falha!",e);
+                return _JsonAutoMapper.Resposta("Falha!", e);
             }
         }
 
@@ -71,18 +75,23 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                    ProdutoNegocio produtoNegocio = new ProdutoNegocio();
-                    CardapoNegocio cardapioNegocio = new CardapoNegocio();
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                CardapoNegocio cardapioNegocio = new CardapoNegocio();
 
-                    produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
-                    var listMenuCardapio  = cardapioNegocio.MontarListaMenuCardapio(cardapioMenu.codigoCardapio, cardapioMenu.titulo, cardapioMenu.descricao, cardapioMenu.ListCodProduto);
-                    cardapioNegocio.VerificaProdutoAdicionadoMenuLista(listMenuCardapio);
-                 
-                     foreach (ListaItemProduto item in listMenuCardapio)
+                produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
+
+                var listMenuCardapio = cardapioNegocio.MontarListaMenuCardapio(cardapioMenu.codigoCardapio, cardapioMenu.titulo, cardapioMenu.descricao, cardapioMenu.ListCodProduto);
+                cardapioNegocio.VerificaProdutoAdicionadoMenuLista(listMenuCardapio);
+
+                var codMenuSeq = _ProdutoItemRepository.GerarcodMenuSeq();
+                foreach (ListaItemProduto item in listMenuCardapio)
+                {
+                    item.codMenuSeq = codMenuSeq;
                     _CardapioService.CriarListaCardapio(item);
+                }
 
-                    return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
-                
+                return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
+
             }
             catch (Exception e)
             {
@@ -90,6 +99,23 @@ namespace FoodServiceApi.Controllers
             }
 
             return _JsonAutoMapper.Resposta("Contatar Administrador!");
+        }
+
+        [HttpDelete]
+        [Route("DeleteListMenu")]
+        public ActionResultado DeleteMenuLista(string codMenuSeq)
+        {
+            try
+            {
+                _ProdutoItemRepository.Delete(codMenuSeq);
+                return _JsonAutoMapper.Resposta("Exclusão do menu realizado com sucesso!");
+
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
         }
 
 
@@ -101,6 +127,7 @@ namespace FoodServiceApi.Controllers
             var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<MenuModel>(listaMenuCardapio);
             return listMenuCardapioModel;
         }
+
 
         // DELETE api/<CardapioController>/5
         [HttpDelete("{id}")]

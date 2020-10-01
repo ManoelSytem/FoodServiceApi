@@ -37,7 +37,7 @@ namespace Aplication.Servico
         }
         public IEnumerable<ListaItemProduto> ObterListaMenuCardapioPorId(int IdCardapio)
         {
-            return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio);
+            return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio && p.delete != "1");
         }
         public void Excluir(Cardapio card)
         {
@@ -68,7 +68,7 @@ namespace Aplication.Servico
 
         public ListaItemProduto ObterItemMenu(int codProduto, int codCardapio)
         {
-            return _uow.ProdutoItemRepository.GetByIdFind(p => p.codProduto == codProduto && p.codigoCardapio == codCardapio);
+            return _uow.ProdutoItemRepository.GetByIdFind(c => c.codProduto == codProduto && c.codigoCardapio == codCardapio && c.delete != "1");
         }
 
     }

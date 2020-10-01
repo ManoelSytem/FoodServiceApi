@@ -64,6 +64,26 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
 }
 
 
+function ExcluirMenuLista(codMenuSeq) {
+
+    $.ajax({
+        url: "/Cardapio/DeleteMenuListaCardapio",
+        type: 'delete',
+        data: { codMenuSeq: codMenuSeq },
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        var ListaMenuHtml = ObjetoHtmlMenuList(data);
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
+}
+
+
 function ObjetoHtmlMenuList(cardapio) {
     var listProdud = '';
     var html = '';
@@ -96,7 +116,7 @@ function ObjetoHtmlMenuList(cardapio) {
             '<button type="button" class="btn btn-primary">Alterar</button>' +
             '</div>' +
             '<div class="col col-lg-2">' +
-            '<button type="button" class="btn btn-danger">Excluir</button>' +
+            '<button type="button" onclick="ExcluirMenuLista('+cardapio['listMenu'][i].codMenuSeq+')" class="btn btn-danger">Excluir</button>' +
             '</div>' +
             '</div>' +
             '</div>' +

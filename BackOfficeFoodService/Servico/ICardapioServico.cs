@@ -18,6 +18,8 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> PostListCardapio(MenuModel listModel);
         [Get("/Cardapio/GetListMenuCardapioPorId")]
         Task<List<MenuModel>> GetListMenuCardapioPorId(int IdCardapio);
+        [Delete("/Cardapio/DeleteListMenu")]
+        Task<ActionResultado> DeleleteListaMenu(string codMenuSeq);
 
     }
 }
