@@ -31,6 +31,14 @@ namespace Aplication.Repository
             _context.SaveChanges();
         }
 
+        public void Update(string codMenuSeq)
+        {
+            (from listMenu in _context.ListaItemProduto
+             where listMenu.codMenuSeq == codMenuSeq
+             select listMenu).ToList().ForEach(x => x.update = "1");
+            _context.SaveChanges();
+        }
+
         public string GerarcodMenuSeq()
         {
             int maxCodLista = _context.ListaItemProduto.Max(u => u.codigoLista);

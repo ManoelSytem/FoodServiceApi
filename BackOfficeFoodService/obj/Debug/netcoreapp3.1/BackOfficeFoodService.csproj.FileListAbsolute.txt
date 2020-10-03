@@ -405,3 +405,4 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.genruntimeconfig.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.csprojAssemblyReference.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Spinner.cshtml.g.cs

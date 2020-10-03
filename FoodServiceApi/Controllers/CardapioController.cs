@@ -118,6 +118,41 @@ namespace FoodServiceApi.Controllers
 
         }
 
+        [HttpPost]
+        [Route("UpdateListMenu")]
+        public ActionResultado UpdateListMenu(MenuModel cardapioMenu)
+        {
+            try
+            {
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                CardapoNegocio cardapioNegocio = new CardapoNegocio();
+
+                produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
+                _ProdutoItemRepository.Delete(cardapioMenu.codMenuSeq);
+                var listMenuCardapio = cardapioNegocio.MontarListaMenuCardapio(cardapioMenu.codigoCardapio, cardapioMenu.titulo, cardapioMenu.descricao, cardapioMenu.ListCodProduto);
+                cardapioNegocio.VerificaProdutoAdicionadoMenuLista(listMenuCardapio);
+            
+                foreach (ListaItemProduto item in listMenuCardapio)
+                {
+                    item.codMenuSeq = cardapioMenu.codMenuSeq;
+                    _CardapioService.CriarListaCardapio(item);
+                }
+                _ProdutoItemRepository.Update(cardapioMenu.codMenuSeq);
+                return _JsonAutoMapper.Resposta("Menu atualizado com sucesso!");
+
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
+
+        }
+
+
+        
+
 
         [HttpGet]
         [Route("GetListMenuCardapioPorId")]

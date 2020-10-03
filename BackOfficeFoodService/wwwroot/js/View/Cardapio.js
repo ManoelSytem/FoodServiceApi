@@ -22,7 +22,8 @@ function CreateListCardapio(idcardapio, tituloCardapio) {
 }
 
 function SalveMenuListCardapio() {
-
+    $("#SalvaMenuLista").attr("disabled", true);
+    $("#wait").css("display", "block");
     var idcardapio = $("#custId").val();
     var titulo = $('#tituloMenu').val();
     var descricao = $('#descricao').val();
@@ -38,6 +39,8 @@ function SalveMenuListCardapio() {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['description']);
         buscaListaCardapio(idcardapio, "");
+        $("#wait").css("display", "none");
+        $("#SalvaMenuLista").attr("disabled", false);
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -45,7 +48,7 @@ function SalveMenuListCardapio() {
 }
 
 function buscaListaCardapio(idcardapio, tituloCardapio) {
-
+        $("#wait").css("display", "block");
     $.ajax({
         url: "/Cardapio/BuscarMenuListaCardapio",
         type: 'get',
@@ -56,6 +59,7 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
         var ListaMenuHtml = ObjetoHtmlMenuList(data);
         $("#Menu").html(ListaMenuHtml);
         $("#MenuCadapio").text("Cardápio Selecionado : " + TituloGlobalSalvar);
+        $("#wait").css("display", "none");
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -65,7 +69,7 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
 
 
 function ExcluirMenuLista(codMenuSeq) {
-
+    var idcardapio = $("#custId").val();
     $.ajax({
         url: "/Cardapio/DeleteMenuListaCardapio",
         type: 'delete',
@@ -73,9 +77,10 @@ function ExcluirMenuLista(codMenuSeq) {
         cache: false,
         async: true,
     }).done(function (data) {
-        var ListaMenuHtml = ObjetoHtmlMenuList(data);
+        buscaListaCardapio(idcardapio, "");
         $("#ModalGenric").modal();
-        $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#ModalGenric .modal-body").text(data['description']);
+        $("#wait").css("display", "none");
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
@@ -83,6 +88,68 @@ function ExcluirMenuLista(codMenuSeq) {
 
 }
 
+function AlterarMenuListaCardapio() {
+
+    $("#wait").css("display", "block");
+    var idcardapio = $("#custId").val();
+    var titulo = $('#tituloMenu').val();
+    var descricao = $('#descricao').val();
+    var SelectProdutos = $('#SelectProduto').val();
+
+    //var codMenu obter o codigo tela
+
+    $.ajax({
+        url: "/Cardapio/AlterarMenuListaCardapio",
+        type: 'Post',
+        data: { idCardapio: idcardapio, titulo: titulo, descricao: descricao, produtos: SelectProdutos, codMenuSeq: $('#codMenuSeq').val()},
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['description']);
+        buscaListaCardapio(idcardapio, "");
+        $("#wait").css("display", "none");
+        $("#SalvaMenuLista").attr("disabled", false);
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
+}
+
+function PreencherDadosFormularioAlteracao(titulo, descricao) {
+
+    $("#SalvaMenuLista").css("display", "none");
+    $("#AlterarMenuLista").css("display", "block");
+
+    var idcardapio = $("#custId").val();
+    var ArrayIdProdutos = [];
+
+    $.ajax({
+        url: "/Cardapio/BuscarMenuListaCardapio",
+        type: 'get',
+        data: { idCardapio: idcardapio },
+        cache: false,
+        async: true,
+    }).done(function (data) {
+
+        for (var i = 0; i < data['listMenu'].length; i++) {
+            $('#tituloMenu').val(data['listMenu'][i].titulo);
+            $('#descricao').val(data['listMenu'][i].descricao);
+            $('#codMenuSeq').val(data['listMenu'][i].codMenuSeq);
+            for (var j = 0; j < data['listMenu'][i]['listProduto'].length; j++) {
+                ArrayIdProdutos[j] = data['listMenu'][i]['listProduto'][j].codigo;
+            }
+        }
+        $('#SelectProduto').val(ArrayIdProdutos);
+
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
+
+}
 
 function ObjetoHtmlMenuList(cardapio) {
     var listProdud = '';
@@ -113,7 +180,7 @@ function ObjetoHtmlMenuList(cardapio) {
             '</div>' +
             '</div>' +
             '<div class="col-md-2">' +
-            '<button type="button" class="btn btn-primary">Alterar</button>' +
+        '<button type="button" onclick="PreencherDadosFormularioAlteracao()"class="btn btn-primary">Alterar</button>' +
             '</div>' +
             '<div class="col col-lg-2">' +
             '<button type="button" onclick="ExcluirMenuLista('+cardapio['listMenu'][i].codMenuSeq+')" class="btn btn-danger">Excluir</button>' +

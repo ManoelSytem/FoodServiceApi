@@ -15,6 +15,7 @@ namespace Dominio
         public string descricao { get; set; }
         public int codProduto { get; set; }
         public string delete { get; set; }
+        public string update { get; set; }
 
     }
 
