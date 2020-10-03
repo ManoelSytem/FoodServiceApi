@@ -96,8 +96,6 @@ function AlterarMenuListaCardapio() {
     var descricao = $('#descricao').val();
     var SelectProdutos = $('#SelectProduto').val();
 
-    //var codMenu obter o codigo tela
-
     $.ajax({
         url: "/Cardapio/AlterarMenuListaCardapio",
         type: 'Post',

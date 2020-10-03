@@ -26,7 +26,7 @@ namespace Aplication.Repository
         public void Delete(string codMenuSeq)
         {
             (from listMenu in _context.ListaItemProduto
-             where listMenu.codMenuSeq == codMenuSeq
+             where listMenu.codMenuSeq == codMenuSeq && listMenu.delete != "1"
              select listMenu).ToList().ForEach(x => x.delete = "1");
             _context.SaveChanges();
         }
@@ -34,7 +34,7 @@ namespace Aplication.Repository
         public void Update(string codMenuSeq)
         {
             (from listMenu in _context.ListaItemProduto
-             where listMenu.codMenuSeq == codMenuSeq
+             where listMenu.codMenuSeq == codMenuSeq && listMenu.delete != "1"
              select listMenu).ToList().ForEach(x => x.update = "1");
             _context.SaveChanges();
         }
