@@ -248,6 +248,30 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("GetListProdutoPorListProduto", new Type[] { typeof(List<int>) });
             return (Task<List<ProdutoModel>>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<ProdutoModel> IProdutoServico.GetProduto(int id)
+        {
+            var arguments = new object[] { id };
+            var func = requestBuilder.BuildRestResultFuncForMethod("GetProduto", new Type[] { typeof(int) });
+            return (Task<ProdutoModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> IProdutoServico.VerificaProdutoMenu(int id, string cliente)
+        {
+            var arguments = new object[] { id, cliente };
+            var func = requestBuilder.BuildRestResultFuncForMethod("VerificaProdutoMenu", new Type[] { typeof(int), typeof(string) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> IProdutoServico.DeleteProdutoPorCliente(int id, string cliente)
+        {
+            var arguments = new object[] { id, cliente };
+            var func = requestBuilder.BuildRestResultFuncForMethod("DeleteProdutoPorCliente", new Type[] { typeof(int), typeof(string) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
     }
 }
 

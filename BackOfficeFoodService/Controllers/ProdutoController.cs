@@ -17,7 +17,8 @@ namespace BackOfficeFoodService.Controllers
         {
             try
             {
-                if (AutenticanteVerifiy()) { 
+                if (AutenticanteVerifiy())
+                {
                     var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                     var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
                     var result = await IProduto.GetListProdutoPorCliente(email);
@@ -41,7 +42,7 @@ namespace BackOfficeFoodService.Controllers
         // GET: ProdutoController/Create
         public ActionResult Create()
         {
-            
+
             return AutenticanteRetirect();
         }
 
@@ -95,24 +96,35 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: ProdutoController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            if (AutenticanteVerifiy())
+            {
+                var cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var resultProduto = await IProduto.GetProduto(id);
+                var resultProdutoEmMenu = await IProduto.VerificaProdutoMenu(id, cliente);
+                SetFlash(Enum.FlashMessageType.Warning, resultProdutoEmMenu.Message);
+                return View(resultProduto);
+            }
+            else { return RedirectToAction("index", "login"); }
         }
 
         // POST: ProdutoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
-            try
+            if (AutenticanteVerifiy())
             {
-                return RedirectToAction(nameof(Index));
+                var cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var result = await IProduto.DeleteProdutoPorCliente(id, cliente);
+                SetFlash(Enum.FlashMessageType.Success, result.Message);
+                return RedirectToAction("index", "Produto");
             }
-            catch
-            {
-                return View();
-            }
+            else { return RedirectToAction("index", "login"); }
         }
     }
+  
 }

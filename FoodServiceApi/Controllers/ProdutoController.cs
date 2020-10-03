@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Model;
+using Aplication.Negocio;
+using Aplication.Repository;
 using Aplication.Servico;
 using Aplication.Util;
 using Dominio;
@@ -19,10 +21,15 @@ namespace FoodServiceApi.Controllers
     {
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly ProdutoService _ProdutoService;
+        private readonly ProdutoItemRepository _ProdutoItemRepository;
+        private readonly ProdutoRepository _ProdutoRepository;
+
         public ProdutoController(IJsonAutoMapper JsonAutoMapper)
         {
             _JsonAutoMapper = JsonAutoMapper;
             _ProdutoService = new ProdutoService();
+            _ProdutoItemRepository = new ProdutoItemRepository();
+            _ProdutoRepository = new ProdutoRepository();
         }
         // GET: api/<ProdutoController>
         [HttpGet]
@@ -44,10 +51,53 @@ namespace FoodServiceApi.Controllers
         }
 
         // GET api/<ProdutoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        [Route("ObterProduto")]
+        public ProdutoModel Get(int id)
         {
-            return "value";
+            var produto = _ProdutoService.ObterProdutoPorId(id);
+            var produtoModel = _JsonAutoMapper.ConvertAutoMapperJson<ProdutoModel>(produto);
+            return produtoModel;
+        }
+
+        [HttpGet]
+        [Route("VerificaProdutoEmMenu")]
+        public ActionResultado VerificaProdutoEmMenu(int id, string cliente)
+        {
+            try
+            {
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                var listaItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
+                var result = produtoNegocio.VerificaSeProdutoExisteMenu(listaItemProduto);
+                return _JsonAutoMapper.Resposta(result);
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
+         
+        }
+
+        [HttpDelete]
+        [Route("DeleteProdutoCliente")]
+        public ActionResultado DeleteProdutoCliente(int id, string cliente)
+        {
+            try
+            {
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                var listaItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
+                _ProdutoRepository.DeleteProdutoPorCliente(id, cliente);
+                return _JsonAutoMapper.Resposta("Produto excluído com sucesso!");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
+
         }
 
         // POST api/<ProdutoController>

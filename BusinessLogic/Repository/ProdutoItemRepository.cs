@@ -46,6 +46,18 @@ namespace Aplication.Repository
             return Convert.ToString(maxCodLista += 1);
         }
 
+
+        public List<ListaItemProduto> ObterProdutoClienteAssociadoCardapio(int idProduto, string cliente)
+        {
+            var listaItemProduto = (from listMenu in _context.Cardapio
+                                    join itemProduto in _context.ListaItemProduto on listMenu.idCardapio equals itemProduto.codigoCardapio
+                                    where itemProduto.codProduto == idProduto && listMenu.idUser == cliente && itemProduto.delete != "1"
+                                    select itemProduto).ToList();
+            _context.SaveChanges();
+
+            return listaItemProduto;
+        }
+
         public void Delete(ListaItemProduto entity)
         {
             throw new NotImplementedException();

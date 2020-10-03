@@ -13,6 +13,7 @@ namespace BackOfficeFoodService.Models
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
         [Display(Name = "Nome do produto")]
         public string nome { get; set; }
+        [Display(Name = "Descrição")]
         public string descricao { get; set; }
         public decimal valor { get; set; }
         public string valorDecimal { get; set; }

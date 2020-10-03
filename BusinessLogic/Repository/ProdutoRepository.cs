@@ -13,10 +13,11 @@ namespace Aplication.Repository
     public class ProdutoRepository : IRepository<Produto>, IProduto
     {
         AplicationDbContext _context;
-        public ProdutoRepository(AplicationDbContext context)
+        public ProdutoRepository()
         {
-            _context = context;
+            _context = new  AplicationDbContext();
         }
+
         public void Add(Produto entity)
         {
             _context.Produto.Add(entity);
@@ -24,6 +25,14 @@ namespace Aplication.Repository
         public Produto GetById(int codigoProduto)
         {
             return _context.Produto.Where(p => p.codigo == codigoProduto).OrderBy(c => c.codigo).Single();
+        }
+
+        public void DeleteProdutoPorCliente(int codProduto, string cliente)
+        {
+            (from prod in _context.Produto
+             where prod.codigo == codProduto && prod.cliente == cliente && prod.delete != "1"
+             select prod).ToList().ForEach(x => x.delete = "1");
+            _context.SaveChanges();
         }
         public void Delete(Produto entity)
         {
