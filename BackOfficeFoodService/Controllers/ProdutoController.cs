@@ -34,9 +34,18 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: ProdutoController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            if (AutenticanteVerifiy())
+            {
+                var cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var resultProduto = await IProduto.GetProduto(id);
+                var resultProdutoEmMenu = await IProduto.VerificaProdutoMenu(id, cliente);
+                SetFlash(Enum.FlashMessageType.Warning, resultProdutoEmMenu.Message);
+                return View(resultProduto);
+            }
+            else { return RedirectToAction("index", "login"); }
         }
 
         // GET: ProdutoController/Create
@@ -75,22 +84,47 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: ProdutoController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            if (AutenticanteVerifiy())
+            {
+                var cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                var resultProduto = await IProduto.GetProduto(id);
+                var resultProdutoEmMenu = await IProduto.VerificaProdutoMenu(id, cliente);
+                SetFlash(Enum.FlashMessageType.Warning, resultProdutoEmMenu.Message);
+                return View(resultProduto);
+            }
+            else { return RedirectToAction("index", "login"); }
         }
 
         // POST: ProdutoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    if (AutenticanteVerifiy())
+                    {
+                        ProdutoModel novoProduto = new ProdutoModel();
+                        novoProduto.nome = collection["nome"];
+                        novoProduto.descricao = collection["descricao"];
+                        novoProduto.valor = Convert.ToDecimal(collection["valor"]);
+                        novoProduto.cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                        var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
+                        var result = await IProduto.Edicao(id,novoProduto);
+                        SetFlash(Enum.FlashMessageType.Success, result.Message);
+                        return View();
+                    }
+                }
+                return View();
             }
-            catch
+            catch (Exception ex)
             {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return View();
             }
         }

@@ -272,6 +272,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("DeleteProdutoPorCliente", new Type[] { typeof(int), typeof(string) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<ActionResultado> IProdutoServico.Edicao(int codProdutoAnterior, ProdutoModel produtoModel)
+        {
+            var arguments = new object[] { codProdutoAnterior, produtoModel };
+            var func = requestBuilder.BuildRestResultFuncForMethod("Edicao", new Type[] { typeof(int), typeof(ProdutoModel) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
     }
 }
 

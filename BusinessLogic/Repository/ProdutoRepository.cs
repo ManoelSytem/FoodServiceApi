@@ -2,6 +2,7 @@
 using Dominio;
 using InfraEstrutura;
 using InfraEstrutura.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,17 @@ namespace Aplication.Repository
             (from prod in _context.Produto
              where prod.codigo == codProduto && prod.cliente == cliente && prod.delete != "1"
              select prod).ToList().ForEach(x => x.delete = "1");
+            _context.SaveChanges();
+        }
+
+        public void AtualizarProduto(int codProduto, Produto produto)
+        {
+            var prod = GetById(codProduto);
+            prod.nome = produto.nome;
+            prod.descricao = produto.descricao;
+            prod.valor = produto.valor;
+            prod.update = "1";
+            _context.Update(prod).State = EntityState.Modified;
             _context.SaveChanges();
         }
         public void Delete(Produto entity)

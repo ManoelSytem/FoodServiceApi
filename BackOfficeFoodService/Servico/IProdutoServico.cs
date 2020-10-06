@@ -21,6 +21,8 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> VerificaProdutoMenu(int id, string cliente);
         [Delete("/Produto/DeleteProdutoCliente")]
         Task<ActionResultado> DeleteProdutoPorCliente(int id, string cliente);
+        [Post("/Produto/Edit")]
+        Task<ActionResultado> Edicao(int codProdutoAnterior, ProdutoModel produtoModel);
 
 
     }

@@ -407,3 +407,5 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.csprojAssemblyReference.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Spinner.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Produto\Delete.cshtml.g.cs
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Produto\Details.cshtml.g.cs
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Produto\Edit.cshtml.g.cs

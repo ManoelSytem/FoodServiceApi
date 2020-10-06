@@ -123,7 +123,25 @@ namespace FoodServiceApi.Controllers
 
             return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
- 
+
+        [HttpPost]
+        [Route("Edit")]
+        public ActionResultado Edit(int codProdutoAnterior, ProdutoModel produtoModel)
+        {
+            try
+            {
+                    Produto produto = _JsonAutoMapper.ConvertAutoMapperJson<Produto>(produtoModel);
+                   _ProdutoRepository.AtualizarProduto(codProdutoAnterior, produto);
+                    return _JsonAutoMapper.Resposta("Produto alterado com sucesso!");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
+        }
+
         // DELETE api/<ProdutoController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
