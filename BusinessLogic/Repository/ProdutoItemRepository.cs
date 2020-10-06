@@ -31,6 +31,29 @@ namespace Aplication.Repository
             _context.SaveChanges();
         }
 
+        public void DeletePorCodLista(int codListaMenu)
+        {
+            (from listMenu in _context.ListaItemProduto
+             where listMenu.codigoLista == codListaMenu && listMenu.delete != "1"
+             select listMenu).ToList().ForEach(x => x.delete = "1");
+            _context.SaveChanges();
+        }
+
+        public void DeleteProdutoAssociadoALista(List<ListaItemProduto> listaItemProduto)
+        {
+            if(listaItemProduto.Count > 0)
+            {
+                foreach(ListaItemProduto item in listaItemProduto)
+                {
+                    (from listMenu in _context.ListaItemProduto
+                     where listMenu.codigoLista == item.codigoLista && listMenu.delete != "1"
+                     select listMenu).ToList().ForEach(x => x.delete = "1");
+                    _context.SaveChanges();
+                }
+            }
+       
+        }
+
         public void Update(string codMenuSeq)
         {
             (from listMenu in _context.ListaItemProduto
@@ -54,7 +77,6 @@ namespace Aplication.Repository
                                     where itemProduto.codProduto == idProduto && listMenu.idUser == cliente && itemProduto.delete != "1"
                                     select itemProduto).ToList();
             _context.SaveChanges();
-
             return listaItemProduto;
         }
 

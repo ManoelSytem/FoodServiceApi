@@ -27,12 +27,12 @@ namespace Aplication.Servico
 
         public IEnumerable<Produto> Listar(string cliente)
         {
-            return _uow.ProdutoRepository.Get(p => p.cliente == cliente);
+            return _uow.ProdutoRepository.Get(p => p.cliente == cliente && p.delete != "1");
         }
 
         public IEnumerable<Produto> ObterListaProdutoPorIdProduto(List<int> idProduto)
         {
-            return _uow.ProdutoRepository.Get().Where(p => idProduto.Contains(p.codigo));
+            return _uow.ProdutoRepository.Get().Where(p => idProduto.Contains(p.codigo) && p.delete != "1");
         }
 
         public void CreateListaPoduto(ListaItemProduto listaItemProduto)

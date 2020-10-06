@@ -115,7 +115,7 @@ function AlterarMenuListaCardapio() {
 
 }
 
-function PreencherDadosFormularioAlteracao(titulo, descricao) {
+function PreencherDadosFormularioAlteracao(codMenu) {
 
     $("#SalvaMenuLista").css("display", "none");
     $("#AlterarMenuLista").css("display", "block");
@@ -132,12 +132,18 @@ function PreencherDadosFormularioAlteracao(titulo, descricao) {
     }).done(function (data) {
 
         for (var i = 0; i < data['listMenu'].length; i++) {
-            $('#tituloMenu').val(data['listMenu'][i].titulo);
-            $('#descricao').val(data['listMenu'][i].descricao);
-            $('#codMenuSeq').val(data['listMenu'][i].codMenuSeq);
-            for (var j = 0; j < data['listMenu'][i]['listProduto'].length; j++) {
-                ArrayIdProdutos[j] = data['listMenu'][i]['listProduto'][j].codigo;
+
+            if (data['listMenu'][i].codMenuSeq == codMenu) {
+
+                $('#tituloMenu').val(data['listMenu'][i].titulo);
+                $('#descricao').val(data['listMenu'][i].descricao);
+                $('#codMenuSeq').val(data['listMenu'][i].codMenuSeq);
+                for (var j = 0; j < data['listMenu'][i]['listProduto'].length; j++) {
+                    ArrayIdProdutos[j] = data['listMenu'][i]['listProduto'][j].codigo;
+                }
+
             }
+           
         }
         $('#SelectProduto').val(ArrayIdProdutos);
 
@@ -178,7 +184,7 @@ function ObjetoHtmlMenuList(cardapio) {
             '</div>' +
             '</div>' +
             '<div class="col-md-2">' +
-        '<button type="button" onclick="PreencherDadosFormularioAlteracao()"class="btn btn-primary">Alterar</button>' +
+        '<button type="button" onclick="PreencherDadosFormularioAlteracao('+cardapio['listMenu'][i].codMenuSeq +')"class="btn btn-primary">Alterar</button>' +
             '</div>' +
             '<div class="col col-lg-2">' +
             '<button type="button" onclick="ExcluirMenuLista('+cardapio['listMenu'][i].codMenuSeq+')" class="btn btn-danger">Excluir</button>' +

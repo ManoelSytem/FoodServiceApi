@@ -89,6 +89,8 @@ namespace FoodServiceApi.Controllers
                 ProdutoNegocio produtoNegocio = new ProdutoNegocio();
                 var listaItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
                 _ProdutoRepository.DeleteProdutoPorCliente(id, cliente);
+                var listaMenuItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
+                _ProdutoItemRepository.DeleteProdutoAssociadoALista(listaMenuItemProduto);
                 return _JsonAutoMapper.Resposta("Produto excluído com sucesso!");
             }
             catch (Exception e)
