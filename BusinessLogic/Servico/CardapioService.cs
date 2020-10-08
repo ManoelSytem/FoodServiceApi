@@ -5,6 +5,8 @@ using InfraEstrutura.Interface;
 using InfraEstrutura.Repository;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace Aplication.Servico
@@ -39,11 +41,12 @@ namespace Aplication.Servico
         {
             return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio && p.delete != "1");
         }
-        public void Excluir(Cardapio card)
+        public void Excluir(int id)
         {
-            _uow.CardapioRepository.Delete(card);
+            var cardapio = _uow.CardapioRepository.Get(x => x.idCardapio == id).Single();
+            cardapio.delete = "1";
+            _uow.CardapioRepository.Update(cardapio);
             _uow.Commit();
-
         }
         public void Alterar(Cardapio card)
         {
@@ -52,7 +55,7 @@ namespace Aplication.Servico
         }
         public IEnumerable<Cardapio> Listar(string cliente)
         {
-            return _uow.CardapioRepository.Get(c => c.idUser == cliente);
+            return _uow.CardapioRepository.Get(c => c.idUser == cliente && c.delete != "1");
         }
 
         public Cardapio GetById(int id)

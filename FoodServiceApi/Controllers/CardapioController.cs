@@ -44,8 +44,8 @@ namespace FoodServiceApi.Controllers
 
         // GET api/<CardapioController>/5
         [HttpGet]
-        [Route("GetCardapioPorId")]
-        public CardapioModel Get(int id)
+        [Route("ObterCardapioPorId")]
+        public CardapioModel ObterCardapioPorId(int id)
         {
             var Cardapio = _CardapioService.GetById(id);
             var CardapioModel = _JsonAutoMapper.ConvertAutoMapperJson<CardapioModel>(Cardapio);
@@ -165,9 +165,43 @@ namespace FoodServiceApi.Controllers
 
 
         // DELETE api/<CardapioController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("DeleteCardapio")]
+        public ActionResultado Delete(int id, string cliente)
         {
+            try
+            {
+              
+                var listaDeMenuCliente = _ProdutoItemRepository.ObterListaMenuAssociadoCardapio(id, cliente);
+                _CardapioService.Excluir(id);
+                _ProdutoItemRepository.DeleteProdutoAssociadoALista(listaDeMenuCliente);
+                return _JsonAutoMapper.Resposta("Exclusão do menu realizado com sucesso!");
+
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+        }
+
+
+        [HttpPut]
+        [Route("AtualizaCardapio")]
+        public ActionResultado AtualizaCardapio(int id, string titulo)
+        {
+            try
+            {
+                var cardapio = _CardapioService.GetById(id);
+                cardapio.titulo = titulo;
+                cardapio.update = "1";
+                _CardapioService.Alterar(cardapio);
+                return _JsonAutoMapper.Resposta("Atualização realizada com sucesso!");
+
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
         }
     }
 }

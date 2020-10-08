@@ -71,6 +71,16 @@ namespace BackOfficeFoodService.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<CardapioModel> ObterCardapio(int id)
+        {
+                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                var result = await ICardapio.ObterCardapioPorId(id);
+                return result;
+        }
+
+
         [HttpPost]
         public async Task<ResultApi> MenuListCardapio(int idCardapio, string titulo, string descricao, string[] produtos)
         {
@@ -225,7 +235,47 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        
+
+        [HttpDelete]
+        public async Task<ResultApi> DeleteCardapio(int id)
+        {
+            try
+            {
+                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                var response = await ICardapio.DeleteCardapio(id, email);
+                var result = new ResultApi { description = response.Message, erro = false };
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
+            }
+
+        }
+
+        [HttpPut]
+        public async Task<ResultApi> AtualizaCardapio(int id, string titulo)
+        {
+            try
+            {
+                var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                var response = await ICardapio.AtualizaCardapio(id,titulo);
+                var result = new ResultApi { description = response.Message, erro = false };
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
+            }
+
+        }
+
 
     }
 }

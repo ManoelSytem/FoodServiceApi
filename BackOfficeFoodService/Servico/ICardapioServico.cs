@@ -14,6 +14,8 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> Post(CardapioModel cardapioModel);
         [Get("/Cardapio/GetListCardapio")]
         Task<List<CardapioModel>> GetListCardapioPorCliente(string cliente);
+        [Get("/Cardapio/ObterCardapioPorId")]
+        Task<CardapioModel> ObterCardapioPorId(int id);
         [Post("/Cardapio/CreateListaCardapio")]
         Task<ActionResultado> PostListCardapio(MenuModel listModel);
         [Get("/Cardapio/GetListMenuCardapioPorId")]
@@ -22,6 +24,9 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> DeleleteListaMenu(string codMenuSeq);
         [Post("/Cardapio/UpdateListMenu")]
         Task<ActionResultado> UpdateListaMenu(MenuModel listModel);
-
+        [Delete("/Cardapio/DeleteCardapio")]
+        Task<ActionResultado> DeleteCardapio(int id, string cliente);
+        [Put("/Cardapio/AtualizaCardapio")]
+        Task<ActionResultado> AtualizaCardapio(int id, string titulo);
     }
 }

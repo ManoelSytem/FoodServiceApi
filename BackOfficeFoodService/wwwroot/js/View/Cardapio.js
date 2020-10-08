@@ -202,3 +202,85 @@ function ObjetoHtmlMenuList(cardapio) {
     return html;
 }
 
+
+
+
+function ExcluirCardapio(codCardapio, nomeCardapio) {
+
+    $("#ModalConfirm").modal();
+    $("#ModalConfirm .modal-body").text("Atenção, deseja realizar a exclusão do cardápio "+nomeCardapio+" ? Todos os menus desse cardápio será excluído. Confirmar a exclusão ?");
+    let btn = document.querySelector('.alert-confirm')
+
+    if (!!btn) {
+        btn.addEventListener('click', function (evt) {
+
+            $.ajax({
+                url: "/Cardapio/DeleteCardapio",
+                type: 'delete',
+                data: { id: codCardapio },
+                cache: false,
+                async: true,
+            }).done(function (data) {
+                $("#ModalGenric").modal();
+                $("#ModalGenric .modal-body").text(data['description']);
+                $("#wait").css("display", "none");
+            }).fail(function (data) {
+                $("#ModalGenric").modal();
+                $("#ModalGenric .modal-body").text(data['responseText']);
+            });;
+
+        }, false)
+    }
+   
+}
+
+
+
+
+function AtualizarCardapio() {
+
+    var titulo = $('#titulo').val();
+    var idCardapio = $('#idCardapio').val();
+
+            $.ajax({
+                url: "/Cardapio/AtualizaCardapio",
+                type: 'Put',
+                data: { id: idCardapio, titulo: titulo },
+                cache: false,
+                async: true,
+            }).done(function (data) {
+                $("#ModalGenric").modal();
+                $("#ModalGenric .modal-body").text(data['description']);
+                $("#wait").css("display", "none");
+            }).fail(function (data) {
+                $("#ModalGenric").modal();
+                $("#ModalGenric .modal-body").text(data['responseText']);
+            });;
+
+}
+
+
+
+function BuscarCardapio(idCardapio) {
+
+    $.ajax({
+        url: "/Cardapio/ObterCardapio",
+        type: 'Get',
+        data: { id: idCardapio},
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        var idCardapio = $('#idCardapio').val(data['idCardapio']);
+        var titulo = $('#titulo').val(data['titulo']);
+
+        $("#Salvar").css("display", "none");
+        $("#IdAtualizarCardapio").css("display", "block");
+
+        $("#wait").css("display", "none");
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
+}
+

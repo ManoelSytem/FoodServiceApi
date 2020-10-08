@@ -75,6 +75,14 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
+        Task<CardapioModel> ICardapioServico.ObterCardapioPorId(int id)
+        {
+            var arguments = new object[] { id };
+            var func = requestBuilder.BuildRestResultFuncForMethod("ObterCardapioPorId", new Type[] { typeof(int) });
+            return (Task<CardapioModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
         Task<ActionResultado> ICardapioServico.PostListCardapio(MenuModel listModel)
         {
             var arguments = new object[] { listModel };
@@ -103,6 +111,22 @@ namespace BackOfficeFoodService.Servico
         {
             var arguments = new object[] { listModel };
             var func = requestBuilder.BuildRestResultFuncForMethod("UpdateListaMenu", new Type[] { typeof(MenuModel) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> ICardapioServico.DeleteCardapio(int id, string cliente)
+        {
+            var arguments = new object[] { id, cliente };
+            var func = requestBuilder.BuildRestResultFuncForMethod("DeleteCardapio", new Type[] { typeof(int), typeof(string) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> ICardapioServico.AtualizaCardapio(int id, string titulo)
+        {
+            var arguments = new object[] { id, titulo };
+            var func = requestBuilder.BuildRestResultFuncForMethod("AtualizaCardapio", new Type[] { typeof(int), typeof(string) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
     }

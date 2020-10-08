@@ -80,6 +80,18 @@ namespace Aplication.Repository
             return listaItemProduto;
         }
 
+
+        public List<ListaItemProduto> ObterListaMenuAssociadoCardapio(int idCardapio, string cliente)
+        {
+            var listaItemProduto = (from listMenu in _context.Cardapio
+                                    join itemProduto in _context.ListaItemProduto on listMenu.idCardapio equals itemProduto.codigoCardapio
+                                    where itemProduto.codigoCardapio == idCardapio && listMenu.idUser == cliente && itemProduto.delete != "1"
+                                    select itemProduto).ToList();
+            _context.SaveChanges();
+            return listaItemProduto;
+        }
+
+
         public void Delete(ListaItemProduto entity)
         {
             throw new NotImplementedException();
