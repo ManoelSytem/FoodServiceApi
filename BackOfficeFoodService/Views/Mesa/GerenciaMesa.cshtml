@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BackOfficeFoodService.Models.MesaModel>
+
+@{
+    ViewData["Title"] = "GerenciaMesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Gerenciar Mesa</h1>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mesa @Html.DisplayFor(modelItem => item.numero)</h5>
+                    <p class="card-text">Status da Mesa: @Html.DisplayFor(modelItem => item.status) </p>
+                    <a href="#" class="btn btn-primary">Abrir mesa</a>
+                    <a href="@Url.Action("MesaConsumo", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero })" class="btn btn-success">Adicionar Consumo</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

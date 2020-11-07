@@ -41,6 +41,7 @@ namespace Aplication.Servico
         {
             return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio && p.delete != "1");
         }
+
         public void Excluir(int id)
         {
             var cardapio = _uow.CardapioRepository.Get(x => x.idCardapio == id).Single();
@@ -61,6 +62,11 @@ namespace Aplication.Servico
         public Cardapio GetById(int id)
         {
             return _uow.CardapioRepository.GetById(c => c.idCardapio == id);
+        }
+
+        public Cardapio ObterCardapioPrincipal()
+        {
+            return _uow.CardapioRepository.GetByIdFind(c => c.ePrincipal == "S" &&  c.delete != "1");
         }
 
 

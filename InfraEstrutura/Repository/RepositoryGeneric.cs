@@ -15,13 +15,16 @@ namespace InfraEstrutura.Repository
         {
             _context = context;
         }
+
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
         public void Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<T> Get()
@@ -48,6 +51,7 @@ namespace InfraEstrutura.Repository
         {
             _context.Entry(entity).State = EntityState.Modified;
             _context.Set<T>().Update(entity);
+            _context.SaveChanges();
         }
 
     }

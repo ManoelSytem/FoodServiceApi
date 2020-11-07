@@ -12,6 +12,9 @@ namespace InfraEstrutura.Repository
         private RepositoryGeneric<Cardapio> _cardapioRepository;
         private RepositoryGeneric<Cliente> _clienteRepository;
         private RepositoryGeneric<Produto> _produtoRepository;
+        private RepositoryGeneric<Mesa> _mesaRepository;
+        private RepositoryGeneric<Conta> _contaRepository;
+        private RepositoryGeneric<Consumo> _consumoRepository;
         private RepositoryGeneric<ListaItemProduto> _listaItemProduto;
 
         public UnitOfWork(AplicationDbContext context)
@@ -54,6 +57,29 @@ namespace InfraEstrutura.Repository
             }
         }
 
+        public IRepository<Conta> ContaRepository
+        {
+            get
+            {
+                return _contaRepository = _contaRepository ?? new RepositoryGeneric<Conta>(_context);
+            }
+        }
+
+        public IRepository<Mesa> MesaRepository
+        {
+            get
+            {
+                return _mesaRepository = _mesaRepository ?? new RepositoryGeneric<Mesa>(_context);
+            }
+        }
+
+        public IRepository<Consumo> ConsumoRepository
+        {
+            get
+            {
+                return _consumoRepository = _consumoRepository ?? new RepositoryGeneric<Consumo>(_context);
+            }
+        }
         public void Commit()
         {
             _context.SaveChanges();

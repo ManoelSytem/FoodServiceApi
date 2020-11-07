@@ -21,6 +21,7 @@ function CreateListCardapio(idcardapio, tituloCardapio) {
     });;
 }
 
+
 function SalveMenuListCardapio() {
     $("#SalvaMenuLista").attr("disabled", true);
     $("#wait").css("display", "block");
@@ -46,6 +47,26 @@ function SalveMenuListCardapio() {
         $("#ModalGenric .modal-body").text(data['responseText']);
     });;
 }
+
+function buscaCardapioPrincipal() {
+
+    $.ajax({
+        url: "/Cardapio/ObterCardapioPrincipal",
+        type: 'get',
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        var IdCardapio = data["idCardapio"];
+        var tituloCardapio = data["titulo"];
+        buscaListaCardapio(IdCardapio, tituloCardapio);
+        $("#Menu").html(ListaMenuHtml);
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
+}
+
 
 function buscaListaCardapio(idcardapio, tituloCardapio) {
         $("#wait").css("display", "block");
@@ -209,11 +230,14 @@ function ExcluirCardapio(codCardapio, nomeCardapio) {
 
     $("#ModalConfirm").modal();
     $("#ModalConfirm .modal-body").text("Atenção, deseja realizar a exclusão do cardápio "+nomeCardapio+" ? Todos os menus desse cardápio será excluído. Confirmar a exclusão ?");
+
     let btn = document.querySelector('.alert-confirm')
 
+  
     if (!!btn) {
+        $("#ModalConfirm .modal-body .ButtonConfirm").text("Aguarde...Realizando exclusão");
         btn.addEventListener('click', function (evt) {
-
+            $("#ButtonConfirm").css("display", "none");
             $.ajax({
                 url: "/Cardapio/DeleteCardapio",
                 type: 'delete',
@@ -221,21 +245,23 @@ function ExcluirCardapio(codCardapio, nomeCardapio) {
                 cache: false,
                 async: true,
             }).done(function (data) {
-                $("#ModalGenric").modal();
-                $("#ModalGenric .modal-body").text(data['description']);
-                $("#wait").css("display", "none");
+                $("#ModalConfirm .modal-body").text(data['description']);
+                $("#ModalConfirm").on('hide.bs.modal', function () {
+                    window.location.href = 'create';
+                });
+
             }).fail(function (data) {
-                $("#ModalGenric").modal();
-                $("#ModalGenric .modal-body").text(data['responseText']);
+                $("#ModalConfirm .modal-body").text(data['responseText']);
+                $("#ModalConfirm").on('hide.bs.modal', function () {
+                    window.location.href = 'create';
+                });
+
             });;
 
         }, false)
     }
    
 }
-
-
-
 
 function AtualizarCardapio() {
 
@@ -251,15 +277,19 @@ function AtualizarCardapio() {
             }).done(function (data) {
                 $("#ModalGenric").modal();
                 $("#ModalGenric .modal-body").text(data['description']);
+                $("#ModalGenric").on('hide.bs.modal', function () {
+                    window.location.href = 'create';
+                });
                 $("#wait").css("display", "none");
             }).fail(function (data) {
                 $("#ModalGenric").modal();
                 $("#ModalGenric .modal-body").text(data['responseText']);
+                $("#ModalGenric").on('hide.bs.modal', function () {
+                    window.location.href = 'create';
+                });
             });;
 
 }
-
-
 
 function BuscarCardapio(idCardapio) {
 
@@ -281,6 +311,11 @@ function BuscarCardapio(idCardapio) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
     });;
+
+}
+
+function limparCamposMenuLista() {
+
 
 }
 

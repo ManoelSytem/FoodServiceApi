@@ -80,6 +80,16 @@ namespace BackOfficeFoodService.Controllers
                 return result;
         }
 
+        [HttpGet]
+        public async Task<CardapioModel> ObterCardapioPrincipal()
+        {
+            var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+            var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+            var result = await ICardapio.ObterCardapioPrincipal();
+            return result;
+        }
+
+
 
         [HttpPost]
         public async Task<ResultApi> MenuListCardapio(int idCardapio, string titulo, string descricao, string[] produtos)
@@ -149,7 +159,6 @@ namespace BackOfficeFoodService.Controllers
 
         }
 
-
         // POST: CardapioController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -163,7 +172,7 @@ namespace BackOfficeFoodService.Controllers
                     collection.idUser = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                     var result = await IcardapioAPI.Post(collection);
                     SetFlash(Enum.FlashMessageType.Success, result.Message);
-                    return View();
+                    return RedirectToAction("Create", "Cardapio"); ;
                 }
                 return View();
             }

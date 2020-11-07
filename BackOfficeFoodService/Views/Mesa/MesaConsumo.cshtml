@@ -1,0 +1,25 @@
+﻿@model BackOfficeFoodService.Models.MesaModel
+
+@{
+    ViewData["Title"] = "MesaConsumo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mesa @TempData["numeroMesa"] - Consumos</h1>
+<hr />
+<a href="#" onclick="buscaCardapioPrincipal();" class="btn btn-success">Buscar Produtos</a>
+
+<div id="ListMenu" class="col">
+    <h4 id="MenuCadapio"></h4>
+    <div id="Menu">
+        @await Html.PartialAsync("../Shared/Spinner.cshtml")
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

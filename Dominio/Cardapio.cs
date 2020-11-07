@@ -13,6 +13,7 @@ namespace Dominio
         public string titulo { get; set; }
         public string delete { get; set; }
         public string update { get; set; }
+        public string ePrincipal { get; set; }
 
     }
 }

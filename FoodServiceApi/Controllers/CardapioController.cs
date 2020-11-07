@@ -52,6 +52,15 @@ namespace FoodServiceApi.Controllers
             return CardapioModel;
         }
 
+        [HttpGet]
+        [Route("ObterCardapioPrincipal")]
+        public CardapioModel ObterCardapioPrincipal()
+        {
+            var Cardapio = _CardapioService.ObterCardapioPrincipal();
+            var CardapioModel = _JsonAutoMapper.ConvertAutoMapperJson<CardapioModel>(Cardapio);
+            return CardapioModel;
+        }
+
         // POST api/<CardapioController>
         [Route("Create")]
         [HttpPost]

@@ -16,5 +16,8 @@ namespace InfraEstrutura
         public DbSet<Cardapio> Cardapio { get; set; }
         public DbSet<ListaItemProduto> ListaItemProduto { get; set; }
         public DbSet<Produto> Produto { get; set; }
+        public DbSet<Mesa> Mesa { get; set; }
+        public DbSet<Conta> Conta { get; set; }
+        public DbSet<Consumo> Consumo { get; set; }
     }
 }
