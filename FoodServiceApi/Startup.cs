@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interface;
+using Aplication.InterfaceNegocio;
+using Aplication.Negocio;
 using Aplication.Repository;
 using Aplication.Servico;
 using Aplication.Util;
@@ -37,6 +39,9 @@ namespace FoodServiceApi
             services.AddControllers().AddNewtonsoftJson();
             services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
             services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
+            services.AddSingleton<IMesaNegocio, MesaNegocio>();
+            services.AddSingleton<IConsumoRepository, ConsumoRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

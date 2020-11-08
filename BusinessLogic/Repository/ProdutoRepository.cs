@@ -46,6 +46,8 @@ namespace Aplication.Repository
             _context.Update(prod).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
+        
         public void Delete(Produto entity)
         {
             throw new NotImplementedException();

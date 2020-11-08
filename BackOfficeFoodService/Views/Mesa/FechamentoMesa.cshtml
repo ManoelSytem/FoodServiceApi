@@ -1,0 +1,91 @@
+﻿@model List<BackOfficeFoodService.Models.ConsumoModel>
+
+@{
+    ViewData["Title"] = "Fechamento Mesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Fechamento Mesa @TempData["numeroMesa"] - Consumos</h1>
+<hr />
+<div class="alert alert-warning" role="alert">
+    <p>
+        Atenção! Realize a revisão do item produto adicionado a mesa. Após isso realize a confirmação.
+        Após a confirmação será redirecionado ao caixa para realizar baixa.
+    </p>
+</div>
+<hr />
+<h3>Lista de produtos adicionado a Mesa @TempData["numeroMesa"]</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Preço  R$
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.valor)
+                    </td>
+                    <td>
+                        |<a href="#" ; onclick="DeleteProdutoConsumoMesa(@item.codigo,@item.codMesa);"> Excluir</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                <div class="row justify-content-end">
+                    <div class="col-4">
+                        <h3 class="text-right">Total : </h3>
+                    </div>
+                    <div class="col-4">
+                        <h5>
+                            @{
+                                decimal total = 0;
+                                @foreach (var item in Model)
+                                {
+                                    total += item.produto.valor;
+                                }
+
+                            }
+                            R$ @total
+                        </h5>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col align-self-center">
+        <button onclick="FechamentoMesa(@TempData["codigo"],@TempData["seqAbreMesa"],@TempData["numeroMesa"])" type="button" class="btn btn-primary">Confirmar fechamento</button>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -11,5 +11,6 @@ namespace Dominio
          public int codigo { get; set; }
          public  int numero { get; set; }
          public string status { get; set; }
+         public string seqAbreMesa { get; set; }
     }
 }

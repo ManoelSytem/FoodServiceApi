@@ -48,24 +48,6 @@ function SalveMenuListCardapio() {
     });;
 }
 
-function buscaCardapioPrincipal() {
-
-    $.ajax({
-        url: "/Cardapio/ObterCardapioPrincipal",
-        type: 'get',
-        cache: false,
-        async: true,
-    }).done(function (data) {
-        var IdCardapio = data["idCardapio"];
-        var tituloCardapio = data["titulo"];
-        buscaListaCardapio(IdCardapio, tituloCardapio);
-        $("#Menu").html(ListaMenuHtml);
-    }).fail(function (data) {
-        $("#ModalGenric").modal();
-        $("#ModalGenric .modal-body").text(data['responseText']);
-    });;
-
-}
 
 
 function buscaListaCardapio(idcardapio, tituloCardapio) {
@@ -176,6 +158,7 @@ function PreencherDadosFormularioAlteracao(codMenu) {
 
 }
 
+
 function ObjetoHtmlMenuList(cardapio) {
     var listProdud = '';
     var html = '';
@@ -235,7 +218,6 @@ function ExcluirCardapio(codCardapio, nomeCardapio) {
 
   
     if (!!btn) {
-        $("#ModalConfirm .modal-body .ButtonConfirm").text("Aguarde...Realizando exclusão");
         btn.addEventListener('click', function (evt) {
             $("#ButtonConfirm").css("display", "none");
             $.ajax({

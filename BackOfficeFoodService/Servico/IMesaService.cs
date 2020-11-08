@@ -11,10 +11,18 @@ namespace BackOfficeFoodService.Servico
     {
         [Post("/Mesa/Create")]
         Task<ActionResultado> Post(MesaModel mesaModel);
+        [Post("/Mesa/AbrirMesa")]
+        Task<ActionResultado> AbrirMesa(int codMesa, int numeroMesa);
+        [Post("/Mesa/FechamentoMesa")]
+        Task<ActionResultado> FechamentoMesa(int codMesa, string seqAbreMesa);
         [Post("/Mesa/AdicionaConsumoMesa")]
         Task<ActionResultado> AdicionaConsumoMesa(ConsumoModel ConsumoModel);
         [Get("/Mesa/ObterListaMesa")]
         Task<List<MesaModel>> ObterListaMesa();
+        [Get("/Mesa/ObterConsumoDaMesa")]
+        Task<List<ConsumoModel>> ObterConsumoDaMesa(string seqAbreMesa);
+        [Delete("/Mesa/DeleteProdutoConsumoMesa")]
+        Task<ActionResultado> DeleteProdutoConsumoMesa(string codigoItemConsumo, int codMesa);
 
     }
 }

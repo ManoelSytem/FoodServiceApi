@@ -11,5 +11,6 @@ namespace BackOfficeFoodService.Models
         public string codMesa { get; set; }
         public string codProduto { get; set; }
         public DateTime horaPedido { get; set; }
+        public ProdutoModel produto { get; set; }
     }
 }

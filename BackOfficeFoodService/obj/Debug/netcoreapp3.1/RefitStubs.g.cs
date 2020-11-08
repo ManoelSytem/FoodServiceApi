@@ -266,6 +266,22 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
+        Task<ActionResultado> IMesaService.AbrirMesa(int codMesa, int numeroMesa)
+        {
+            var arguments = new object[] { codMesa, numeroMesa };
+            var func = requestBuilder.BuildRestResultFuncForMethod("AbrirMesa", new Type[] { typeof(int), typeof(int) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> IMesaService.FechamentoMesa(int codMesa, string seqAbreMesa)
+        {
+            var arguments = new object[] { codMesa, seqAbreMesa };
+            var func = requestBuilder.BuildRestResultFuncForMethod("FechamentoMesa", new Type[] { typeof(int), typeof(string) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
         Task<ActionResultado> IMesaService.AdicionaConsumoMesa(ConsumoModel ConsumoModel)
         {
             var arguments = new object[] { ConsumoModel };
@@ -279,6 +295,22 @@ namespace BackOfficeFoodService.Servico
             var arguments = new object[] {  };
             var func = requestBuilder.BuildRestResultFuncForMethod("ObterListaMesa", new Type[] {  });
             return (Task<List<MesaModel>>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<List<ConsumoModel>> IMesaService.ObterConsumoDaMesa(string seqAbreMesa)
+        {
+            var arguments = new object[] { seqAbreMesa };
+            var func = requestBuilder.BuildRestResultFuncForMethod("ObterConsumoDaMesa", new Type[] { typeof(string) });
+            return (Task<List<ConsumoModel>>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        Task<ActionResultado> IMesaService.DeleteProdutoConsumoMesa(string codigoItemConsumo, int codMesa)
+        {
+            var arguments = new object[] { codigoItemConsumo, codMesa };
+            var func = requestBuilder.BuildRestResultFuncForMethod("DeleteProdutoConsumoMesa", new Type[] { typeof(string), typeof(int) });
+            return (Task<ActionResultado>)func(Client, arguments);
         }
     }
 }

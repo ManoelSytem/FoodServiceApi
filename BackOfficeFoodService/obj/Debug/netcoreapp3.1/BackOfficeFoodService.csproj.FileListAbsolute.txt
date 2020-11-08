@@ -368,7 +368,6 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.csprojAssemblyReference.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\RefitStubs.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.AssemblyInfoInputs.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.AssemblyInfo.cs
@@ -387,6 +386,7 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Login\Create.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Mesa\FechamentoMesa.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Mesa\GerenciaMesa.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Mesa\Index.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Mesa\MesaConsumo.cshtml.g.cs

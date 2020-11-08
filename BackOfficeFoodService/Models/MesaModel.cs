@@ -13,5 +13,7 @@ namespace BackOfficeFoodService.Models
         [Required(ErrorMessage = "Informe o número da mesa.")]
         public int numero { get; set; }
         public string status { get; set; }
+        public string seqAbreMesa { get; set; }
+
     }
 }

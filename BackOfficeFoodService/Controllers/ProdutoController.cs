@@ -51,7 +51,6 @@ namespace BackOfficeFoodService.Controllers
         // GET: ProdutoController/Create
         public ActionResult Create()
         {
-
             return AutenticanteRetirect();
         }
 
