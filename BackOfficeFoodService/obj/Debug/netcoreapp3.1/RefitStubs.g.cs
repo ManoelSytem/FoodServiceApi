@@ -174,6 +174,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("Post", new Type[] { typeof(ClienteModel) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<ClienteModel> IClienteServico.ObterClientePorEmail(string email)
+        {
+            var arguments = new object[] { email };
+            var func = requestBuilder.BuildRestResultFuncForMethod("ObterClientePorEmail", new Type[] { typeof(string) });
+            return (Task<ClienteModel>)func(Client, arguments);
+        }
     }
 }
 
@@ -298,10 +306,10 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
-        Task<List<ConsumoModel>> IMesaService.ObterConsumoDaMesa(string seqAbreMesa)
+        Task<List<ConsumoModel>> IMesaService.ObterConsumoDaMesa(string seqAbreMesa, bool EcupomFiscal)
         {
-            var arguments = new object[] { seqAbreMesa };
-            var func = requestBuilder.BuildRestResultFuncForMethod("ObterConsumoDaMesa", new Type[] { typeof(string) });
+            var arguments = new object[] { seqAbreMesa, EcupomFiscal };
+            var func = requestBuilder.BuildRestResultFuncForMethod("ObterConsumoDaMesa", new Type[] { typeof(string), typeof(bool) });
             return (Task<List<ConsumoModel>>)func(Client, arguments);
         }
 

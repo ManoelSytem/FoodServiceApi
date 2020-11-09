@@ -48,6 +48,16 @@ namespace Aplication.Repository
             return listaConsumo;
         }
 
+        public List<Consumo> ObterListarConsumoMesaFechamento(string seqAbreMesa)
+        {
+            var listaConsumo = (from Consumo in _context.Consumo
+                                where Consumo.seqAbreMesa == seqAbreMesa && Consumo.delete != "1"
+                                && Consumo.status == "F"
+                                select Consumo).ToList();
+
+            return listaConsumo;
+        }
+
 
         public void DeleteProdutoConsumoMesa(string codigoItemConsumo)
         {

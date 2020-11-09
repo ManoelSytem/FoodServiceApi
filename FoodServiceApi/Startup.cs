@@ -8,6 +8,7 @@ using Aplication.Negocio;
 using Aplication.Repository;
 using Aplication.Servico;
 using Aplication.Util;
+using BusinessLogic.Servico;
 using Dominio;
 using InfraEstrutura.Interface;
 using InfraEstrutura.Repository;
@@ -40,8 +41,9 @@ namespace FoodServiceApi
             services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
             services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
             services.AddSingleton<IMesaNegocio, MesaNegocio>();
-            services.AddSingleton<IConsumoRepository, ConsumoRepository>();
-
+            services.AddTransient<IConsumoRepository, ConsumoRepository>();
+            services.AddSingleton<IClienteService, ClienteService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

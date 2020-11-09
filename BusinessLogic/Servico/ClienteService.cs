@@ -1,20 +1,17 @@
-﻿using Dominio;
+﻿using Aplication.Interface;
+using Dominio;
 using InfraEstrutura.Interface;
 using InfraEstrutura.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BusinessLogic.Servico
 {
-    public class ClienteService : IDisposable
+    public class ClienteService : IClienteService,  IDisposable
     {
         UnitOfWork _uow;
-        public ClienteService(UnitOfWork uow)
-        {
-            _uow = uow;
-        }
-
         public ClienteService()
         {
             _uow = new UnitOfWork();
@@ -43,6 +40,11 @@ namespace BusinessLogic.Servico
         public void Dispose()
         {
             _uow.Dispose();
+        }
+
+        public Cliente ObterClientePorEmail(string email)
+        {
+           return _uow.ClienteRepository.Get().Where(c => c.email == email).First();
         }
     }
 }

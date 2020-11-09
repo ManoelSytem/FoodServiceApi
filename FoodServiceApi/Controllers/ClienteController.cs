@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Enum;
+using Aplication.Interface;
 using Aplication.Model;
 using Aplication.Util;
 using BusinessLogic.Servico;
@@ -19,11 +20,11 @@ namespace FoodServiceApi.Controllers
     public class ClienteController : ControllerBase
     {
         private readonly IJsonAutoMapper _JsonAutoMapper;
-        private readonly ClienteService _ClienteService;
-        public ClienteController(IJsonAutoMapper jsonAutoMapper)
+        private readonly IClienteService _ClienteService;
+        public ClienteController(IJsonAutoMapper jsonAutoMapper, IClienteService _clienteService)
         {
             _JsonAutoMapper = jsonAutoMapper;
-            _ClienteService = new ClienteService();
+            _ClienteService = _clienteService;
         }
         // GET: api/<ClienteController>
         [HttpGet]
@@ -57,6 +58,15 @@ namespace FoodServiceApi.Controllers
             {
                 return _JsonAutoMapper.Resposta("Falha!", e);
             }
+        }
+
+        [Route("ObterClientePorEmail")]
+        [HttpGet]
+        public ClienteModel ObterClientePorEmail(string email)
+        {
+                var cliente =  _ClienteService.ObterClientePorEmail(email);
+                var ClienteModel = _JsonAutoMapper.ConvertAutoMapperJson<ClienteModel>(cliente);
+                return ClienteModel;
         }
 
         // PUT api/<ClienteController>/5

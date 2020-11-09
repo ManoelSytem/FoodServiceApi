@@ -69,7 +69,7 @@ namespace BackOfficeFoodService.Controllers
         public async Task<IActionResult> MesaConsumo(int codigo, int numeroMesa, string seqAbreMesa)
         {
             var IMesaService = RestService.For<IMesaService>(Servico.Servico.UrlBaseFoodService());
-            var result =  await IMesaService.ObterConsumoDaMesa(seqAbreMesa);
+            var result =  await IMesaService.ObterConsumoDaMesa(seqAbreMesa,false);
             TempData["codigo"] = codigo;
             TempData["numeroMesa"] = numeroMesa;
             TempData["seqAbreMesa"] = seqAbreMesa;
@@ -97,7 +97,7 @@ namespace BackOfficeFoodService.Controllers
         public async Task<IActionResult> FechamentoMesa(int codigo, int numeroMesa, string seqAbreMesa)
         {
             var IMesaService = RestService.For<IMesaService>(Servico.Servico.UrlBaseFoodService());
-            var result = await IMesaService.ObterConsumoDaMesa(seqAbreMesa);
+            var result = await IMesaService.ObterConsumoDaMesa(seqAbreMesa,false);
             TempData["codigo"] = codigo;
             TempData["numeroMesa"] = numeroMesa;
             TempData["seqAbreMesa"] = seqAbreMesa;
@@ -151,7 +151,7 @@ namespace BackOfficeFoodService.Controllers
         public async Task<List<ConsumoModel>> ObterConsumoMesa(string seqAbreMesa)
         {
             var IMesaService = RestService.For<IMesaService>(Servico.Servico.UrlBaseFoodService());
-            var result = await IMesaService.ObterConsumoDaMesa(seqAbreMesa);
+            var result = await IMesaService.ObterConsumoDaMesa(seqAbreMesa,false);
             return result;
         }
     }

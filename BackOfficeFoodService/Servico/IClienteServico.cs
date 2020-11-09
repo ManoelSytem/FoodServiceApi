@@ -11,5 +11,8 @@ namespace BackOfficeFoodService.Servico
     {
         [Post("/Cliente/Create")]
         Task<ActionResultado> Post(ClienteModel clienteModel);
+        [Get("/Cliente/ObterClientePorEmail")]
+        Task<ClienteModel> ObterClientePorEmail(string email);
+
     }
 }

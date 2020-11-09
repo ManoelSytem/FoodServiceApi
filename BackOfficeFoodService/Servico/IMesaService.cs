@@ -20,7 +20,7 @@ namespace BackOfficeFoodService.Servico
         [Get("/Mesa/ObterListaMesa")]
         Task<List<MesaModel>> ObterListaMesa();
         [Get("/Mesa/ObterConsumoDaMesa")]
-        Task<List<ConsumoModel>> ObterConsumoDaMesa(string seqAbreMesa);
+        Task<List<ConsumoModel>> ObterConsumoDaMesa(string seqAbreMesa, bool EcupomFiscal);
         [Delete("/Mesa/DeleteProdutoConsumoMesa")]
         Task<ActionResultado> DeleteProdutoConsumoMesa(string codigoItemConsumo, int codMesa);
 

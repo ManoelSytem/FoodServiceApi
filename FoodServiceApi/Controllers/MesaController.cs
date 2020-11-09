@@ -86,7 +86,7 @@ namespace FoodServiceApi.Controllers
                     _ConsumoRepository.Update(consumo);
                 }
                 _MesaRepository.update(mesa);
-                return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número da Baixa " + mesa.seqAbreMesa+". Para visualizar código da baixa novamente consulte em Caixa>Baixa Pendentes");
+                return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistem em: Caixa>Cupom fiscal");
             }
             catch (Exception e)
             {
@@ -128,9 +128,13 @@ namespace FoodServiceApi.Controllers
 
         [Route("ObterConsumoDaMesa")]
         [HttpGet]
-        public List<ConsumoModel> ObterConsumoDaMesa(string seqAbreMesa)
+        public List<ConsumoModel> ObterConsumoDaMesa(string seqAbreMesa, bool EcupomFiscal)
         {
-            var listConsumo = _ConsumoRepository.ObterListarConsumoMesa(seqAbreMesa);
+            List<Consumo> listConsumo;
+            if (EcupomFiscal) 
+            { listConsumo = _ConsumoRepository.ObterListarConsumoMesaFechamento(seqAbreMesa); }
+            else { listConsumo = _ConsumoRepository.ObterListarConsumoMesa(seqAbreMesa); }
+           
             var listaConsumoModel = _JsonAutoMapper.ConvertAutoMapperListJson<ConsumoModel>(listConsumo);
             List<ConsumoModel> listConsumoProduto = new List<ConsumoModel>();
             foreach (ConsumoModel consumo in listaConsumoModel)

@@ -11,6 +11,7 @@ namespace Aplication.Interface
         public List<Produto> ObterListaDeProdutoPorConsumoMesa(string seqAbreMesa);
         public void DeleteProdutoConsumoMesa(string codigoItemConsumo);
         public List<Consumo> ObterListarConsumoMesa(string seqAbreMesa);
+        public List<Consumo> ObterListarConsumoMesaFechamento(string seqAbreMesa);
         public void Update(Consumo consumo);
     }
 }

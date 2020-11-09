@@ -133,7 +133,10 @@ function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa) {
     
     if (!!btn) {
         btn.addEventListener('click', function (evt) {
-            $("#ModalConfirm").modal('hide');
+            //Bloqueando bottão aguardando finalização
+            $("#ButtonConfirm").prop("disabled", true);
+            $("#ModalConfirm .modal-body").text("Aguarde... Realizando fechamento na Mesa " + numeroMesa + "...");
+
             $.ajax({
                 url: "/Mesa/FechamentoMesa",
                 type: 'Post',
@@ -141,12 +144,18 @@ function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa) {
                 cache: false,
                 async: true,
             }).done(function (data) {
-               
-                $("#ModalGenric").modal();
-                $("#ModalGenric .modal-body").text(data['description']);
-                $("#ModalGenric").on('hide.bs.modal', function () {
-                    window.location.href = 'GerenciaMesa';
+
+                //Processo de gerar cupom não fiscal apos finalização com sucesso do fechamento
+                $("#ModalConfirm .modal-body").text(data['description']);
+                $("#ButtonConfirm").text('Gerar CUPOM NÃO FISCAL');
+                $("#ButtonConfirm").css('background-color', 'black');
+                $("#ButtonConfirm").prop("disabled", false);
+
+                btn.addEventListener('click', function (evt) {
+                   
+                    window.location = '/Caixa/CupomNaoFiscal?seqAbreMesa='+seqAbreMesa;
                 });
+                    
 
             }).fail(function (data) {
                 $("#ModalGenric").modal();
