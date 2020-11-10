@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using BackOfficeFoodService.Models;
 using BackOfficeFoodService.Servico;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Refit;
 
 namespace BackOfficeFoodService.Controllers
@@ -40,6 +42,24 @@ namespace BackOfficeFoodService.Controllers
             }
             return View();
         }
-           
+        public async Task<IActionResult> ContaAReceber()
+        {
+            try
+            {
+                var ICaixa = RestService.For<ICaixaService>(Servico.Servico.UrlBaseFoodService());
+                var listaFormaPgto = await ICaixa.ObterListaPagamento();
+                ViewBag.FormaPagamento = new SelectList(listaFormaPgto, "codigo", "descricao");
+                return View();
+
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
+
+        }
+
+
     }
 }

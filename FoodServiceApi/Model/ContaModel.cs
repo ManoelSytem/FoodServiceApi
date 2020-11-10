@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Dominio
+namespace FoodServiceApi.Model
 {
-    [Table("conta")]
-    public class Conta
+    public class ContaModel
     {
-        [Key]
         public int codigo { get; set; }
         public string seqAbreMesa { get; set; }
         public decimal total { get; set; }
-        public DateTime formaPagamento { get; set; }
-        public DateTime dataAbertura { get; set; }
-        public DateTime dataFechamento { get; set; }
+        public string formaPagamento { get; set; }
         public decimal valorEntrada { get; set; }
         public decimal valorSaida { get; set; }
         public decimal totalTroco { get; set; }

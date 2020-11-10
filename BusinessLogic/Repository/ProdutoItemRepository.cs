@@ -64,9 +64,15 @@ namespace Aplication.Repository
 
         public string GerarcodMenuSeq()
         {
-            int maxCodLista = _context.ListaItemProduto.Max(u => u.codigoLista);
-
-            return Convert.ToString(maxCodLista += 1);
+            var temRegistro  = _context.ListaItemProduto.FirstOrDefault();
+            int maxCodLista = 0;
+            if (temRegistro != null)
+            {
+                maxCodLista = _context.ListaItemProduto.Max(u => u.codigoLista);
+                return Convert.ToString(maxCodLista += 1);
+            }
+           
+             return Convert.ToString(maxCodLista += 1);
         }
 
 

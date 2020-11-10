@@ -80,5 +80,12 @@ namespace Aplication.Servico
             return _uow.ProdutoItemRepository.GetByIdFind(c => c.codProduto == codProduto && c.codigoCardapio == codCardapio && c.delete != "1");
         }
 
+        public void DefenirCardapioPrincipal(int codCardapio)
+        {
+            var cardapio = _uow.CardapioRepository.Get(x => x.idCardapio == codCardapio).Single();
+            cardapio.ePrincipal = "S";
+            _uow.CardapioRepository.Update(cardapio);
+            _uow.Commit();
+        }
     }
 }

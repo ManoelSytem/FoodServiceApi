@@ -285,6 +285,23 @@ namespace BackOfficeFoodService.Controllers
 
         }
 
+        [HttpPut]
+        public async Task<ResultApi> DefinirCardapioPrincipal(int codCardapio)
+        {
+            try
+            {
+                var ICardapio = RestService.For<ICardapioServico>(Servico.Servico.UrlBaseFoodService());
+                var response = await ICardapio.DefinirCardapioPrincipal(codCardapio);
+                var result = new ResultApi { description = response.Message, erro = false };
+                return result;
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
+            }
+
+        }
 
     }
 }

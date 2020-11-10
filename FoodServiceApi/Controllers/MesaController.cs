@@ -86,7 +86,7 @@ namespace FoodServiceApi.Controllers
                     _ConsumoRepository.Update(consumo);
                 }
                 _MesaRepository.update(mesa);
-                return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistem em: Caixa>Cupom fiscal");
+                return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistema em: Caixa>Cupom fiscal");
             }
             catch (Exception e)
             {

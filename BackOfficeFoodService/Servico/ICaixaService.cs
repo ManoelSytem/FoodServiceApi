@@ -1,0 +1,17 @@
+﻿using BackOfficeFoodService.Models;
+using Refit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BackOfficeFoodService.Servico
+{
+    public interface ICaixaService
+    {
+        [Get("/Caixa/ObterListaFormaPagamento")]
+        Task<List<FormaPagamentoModel>> ObterListaPagamento();
+        [Get("/Caixa/ObterContaPendente")]
+        Task<List<FormaPagamentoModel>> ObterContaPendente(string seqAbreConta);
+    }
+}

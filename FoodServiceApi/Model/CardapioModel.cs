@@ -10,5 +10,6 @@ namespace FoodServiceApi.Model
         public int idCardapio { get; set; }
         public string idUser { get; set; }
         public string titulo { get; set; }
+        public string ePrincipal { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace BackOfficeFoodService.Controllers
                     {
                         if (Convert.ToBoolean(token.authenticated))
                         {
-                            var usuario = await loginAPI.Get();
+                            var usuario = await loginAPI.Get(collection.Email,collection.Password);
                             HttpContext.Session.SetObject<Usuario>("Usuario", usuario);
                             HttpContext.Session.SetObject<Token>("Token", token);
                             return RedirectToAction("Index", "Home");

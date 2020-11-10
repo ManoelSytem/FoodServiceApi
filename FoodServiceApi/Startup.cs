@@ -43,7 +43,8 @@ namespace FoodServiceApi
             services.AddSingleton<IMesaNegocio, MesaNegocio>();
             services.AddTransient<IConsumoRepository, ConsumoRepository>();
             services.AddSingleton<IClienteService, ClienteService>();
-            
+            services.AddSingleton<IContaRepository, ContaRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

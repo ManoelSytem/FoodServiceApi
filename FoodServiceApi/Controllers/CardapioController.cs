@@ -212,5 +212,21 @@ namespace FoodServiceApi.Controllers
                 return _JsonAutoMapper.Resposta("Falha!", e);
             }
         }
+
+        [HttpPut]
+        [Route("DefinirCardapioPrincipal")]
+        public ActionResultado DefinirCardapioPrincipal(int codCardapio)
+        {
+            try
+            {
+                _CardapioService.DefenirCardapioPrincipal(codCardapio);
+                return _JsonAutoMapper.Resposta("Cardápio definido príncipal com sucesso!");
+
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+        }
     }
 }

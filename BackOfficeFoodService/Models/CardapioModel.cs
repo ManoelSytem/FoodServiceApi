@@ -16,6 +16,7 @@ namespace BackOfficeFoodService.Models
         public string titulo { get; set; }
         public IEnumerable<CardapioModel> ListCardapio { get; set; }
         public IEnumerable<MenuModel> ListMenu { get; set; }
+        public string ePrincipal { get; set; }
 
     }
 }

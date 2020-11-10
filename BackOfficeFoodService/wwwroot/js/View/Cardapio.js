@@ -296,8 +296,36 @@ function BuscarCardapio(idCardapio) {
 
 }
 
-function limparCamposMenuLista() {
+//Definindo cardapio principal
+$("#cadapioPrincipal").on('change', "input[name=cardprincipal]", function () {
 
+    var codCardapio = $('input[name=cardprincipal]:checked', '#cadapioPrincipal').val();
+    DefinirCardapioPrincipal(codCardapio);
+});
+
+function DefinirCardapioPrincipal(codCardapio) {
+
+    
+
+    $.ajax({
+        url: "/Cardapio/DefinirCardapioPrincipal",
+        type: 'Put',
+        data: { codCardapio: codCardapio },
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['description']);
+        $("#ModalGenric").on('hide.bs.modal', function () {
+            window.location.href = 'create';
+        });
+        $("#wait").css("display", "none");
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#ModalGenric").on('hide.bs.modal', function () {
+            window.location.href = 'create';
+        });
+    });;
 
 }
-

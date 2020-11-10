@@ -34,6 +34,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.titulo)
                         </th>
+                        <th>Cardápio Principal</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -47,10 +48,16 @@
                             @Html.DisplayFor(modelItem => item.titulo)
                         </td>
                         <td>
+                            <div  id="cadapioPrincipal" class="col-md text-center custom-control custom-radio">
+                                    <input class="form-check-input " type="radio" name="cardprincipal"  value="@item.idCardapio" >
+                            </div>
+                        </td>
+                        <td>
                             <a href="#" ; onclick="CreateListCardapio('@item.idCardapio', '@item.titulo');">Lista de Menu </a>
                             |<a href="#" ; onclick="BuscarCardapio('@item.idCardapio');">Alterar</a>
                             |<a href="#" ; onclick="ExcluirCardapio('@item.idCardapio', '@item.titulo');"> Excluir</a>
                         </td>
+
                     </tr>
                         }
                     }

@@ -9,5 +9,7 @@ namespace Aplication.Interface
     {
         public void CriarListaCardapio(ListaItemProduto listaItemProduto);
         public ListaItemProduto ObterItemMenu(int codProduto, int codCardapio);
+
+        public void DefenirCardapioPrincipal(int codCardapio);
     }
 }
