@@ -380,6 +380,7 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.TagHelpers.input.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.TagHelpers.output.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.RazorCoreGenerate.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Caixa\ContaAReceber.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Caixa\CupomNaoFiscal.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cardapio\Create.cshtml.g.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cardapio\MenuListCardapio.cshtml.g.cs
@@ -414,4 +415,3 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.genruntimeconfig.cache
-C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Caixa\ContaAReceber.cshtml.g.cs

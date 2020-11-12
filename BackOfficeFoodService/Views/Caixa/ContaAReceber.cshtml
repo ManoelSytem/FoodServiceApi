@@ -17,16 +17,16 @@
                 <div class="row">
                     <div class="col-4">
                         <label asp-for="seqAbreMesa" class="control-label"></label>
-                        <input asp-for="seqAbreMesa" class="form-control" />
+                        <input type="number" asp-for="seqAbreMesa" class="valor form-control" />
                         <span asp-validation-for="seqAbreMesa" class="text-danger"></span>
                     </div>
                     <div class="col-4 row justify-content-center">
-                        <button onclick="FechamentoMesa(@TempData["codigo"],@TempData["seqAbreMesa"],@TempData["numeroMesa"])" type="button" class="btn btn-primary">Buscar Conta</button>
+                        <button onclick="BuscarConta()" type="button" class="btn btn-primary">Buscar Conta</button>
                     </div>
                     <div class="col-5 row justify-content-center">
-                        <label class="control-label">Mesa Número: 23</label>
-                        <label class="control-label">Data Hora abertura:  17:25</label>
-                        <label class="control-label">Data Hora Fechamento: 18:33</label>
+                        <label id="numeroMesa" class="control-label"></label>
+                        <label id="DataAbertura" class="control-label"></label>
+                        <label id="DataFehamento" class="control-label"></label>
                     </div>
                 </div>
             </div>
@@ -35,10 +35,9 @@
                     <div class="col-4">
                         <label asp-for="total" class="control-label"></label>
                         <input asp-for="total" class="form-control" readonly />
-                        <span asp-validation-for="total" class="text-danger"></span>
+                        <input type="hidden"  id="totalReal" class="form-control" readonly />
                     </div>
-                    <div class="col-4 row justify-content-center">
-                        <button onclick="FechamentoMesa(@TempData["codigo"],@TempData["seqAbreMesa"],@TempData["numeroMesa"])" type="button" class="btn btn-dark">Cupom Não fiscal</button>
+                    <div id="CupomFiscal" class="col-4 row justify-content-center">
                     </div>
                 </div>
             </div>
@@ -49,12 +48,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="valorEntrada" class="control-label"></label>
-                <input asp-for="valorEntrada" class="valor form-control" />
+                <input asp-for="valorEntrada" class="valor form-control" disabled/>
                 <span asp-validation-for="valorEntrada" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="totalTroco" class="control-label"></label>
-                <input asp-for="totalTroco" class="valor form-control" />
+                <input asp-for="totalTroco" class="valor form-control" disabled/>
                 <span asp-validation-for="totalTroco" class="text-danger"></span>
             </div>
             <div class="form-group">

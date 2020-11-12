@@ -66,11 +66,11 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
-        Task<List<FormaPagamentoModel>> ICaixaService.ObterContaPendente(string seqAbreConta)
+        Task<ContaModel> ICaixaService.ObterContaPendente(string seqAbreMesa)
         {
-            var arguments = new object[] { seqAbreConta };
+            var arguments = new object[] { seqAbreMesa };
             var func = requestBuilder.BuildRestResultFuncForMethod("ObterContaPendente", new Type[] { typeof(string) });
-            return (Task<List<FormaPagamentoModel>>)func(Client, arguments);
+            return (Task<ContaModel>)func(Client, arguments);
         }
     }
 }
@@ -335,10 +335,10 @@ namespace BackOfficeFoodService.Servico
         }
 
         /// <inheritdoc />
-        Task<ActionResultado> IMesaService.FechamentoMesa(int codMesa, string seqAbreMesa)
+        Task<ActionResultado> IMesaService.FechamentoMesa(int codMesa, string seqAbreMesa, decimal totalFechamento)
         {
-            var arguments = new object[] { codMesa, seqAbreMesa };
-            var func = requestBuilder.BuildRestResultFuncForMethod("FechamentoMesa", new Type[] { typeof(int), typeof(string) });
+            var arguments = new object[] { codMesa, seqAbreMesa, totalFechamento };
+            var func = requestBuilder.BuildRestResultFuncForMethod("FechamentoMesa", new Type[] { typeof(int), typeof(string), typeof(decimal) });
             return (Task<ActionResultado>)func(Client, arguments);
         }
 

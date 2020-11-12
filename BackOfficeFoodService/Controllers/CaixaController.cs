@@ -42,6 +42,13 @@ namespace BackOfficeFoodService.Controllers
             }
             return View();
         }
+
+        public async Task<ContaModel> ObterContaPendente(string seqAbreMesa)
+        {
+            var ICaixa = RestService.For<ICaixaService>(Servico.Servico.UrlBaseFoodService());
+            var contaModel = await ICaixa.ObterContaPendente(seqAbreMesa);
+            return contaModel;  
+        }
         public async Task<IActionResult> ContaAReceber()
         {
             try

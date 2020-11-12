@@ -12,6 +12,9 @@ namespace BackOfficeFoodService.Models
         [Required(ErrorMessage = "Informe o número do Pedido para realizar a buscar")]
         [Display(Name = "Número Pedido")]
         public string seqAbreMesa { get; set; }
+        public int numeroMesa { get; set; }
+        public DateTime dataAbertura { get; set; }
+        public DateTime dataFechamento { get; set; }
         [Display(Name = "R$ Total a pagar")]
         public decimal total { get; set; }
         [Display(Name = "Forma de Pagamento")]

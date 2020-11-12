@@ -10,5 +10,7 @@ namespace Aplication.Interface
         public void Add(Conta conta);
         public Conta ObterContaPendente(string seqAbreMesa);
         public IEnumerable<FormaPagamento> ObterListaFormaPagamento();
+        public Conta ObterContaAberta(string seqAbreMesa);
+        public void Update(Conta conta);
     }
 }

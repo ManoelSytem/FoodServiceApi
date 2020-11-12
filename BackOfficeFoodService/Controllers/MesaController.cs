@@ -77,12 +77,12 @@ namespace BackOfficeFoodService.Controllers
         }
       
         [HttpPost]
-        public async Task<ResultApi> FechamentoMesa(int codMesa, string seqAbreMesa)
+        public async Task<ResultApi> FechamentoMesa(int codMesa, string seqAbreMesa, decimal totalFechamento)
         {
             try
             {
                 var IMesaService = RestService.For<IMesaService>(Servico.Servico.UrlBaseFoodService());
-                var response = await IMesaService.FechamentoMesa(codMesa, seqAbreMesa);
+                var response = await IMesaService.FechamentoMesa(codMesa, seqAbreMesa, totalFechamento);
                 var result = new ResultApi { description = response.Message, erro = false };
                 return result;
             }

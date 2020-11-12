@@ -24,14 +24,16 @@ namespace FoodServiceApi.Controllers
         private readonly IMesaNegocio _IMesaNegocio;
         private readonly IConsumoRepository _ConsumoRepository;
         private readonly ProdutoRepository _ProdutoRepository;
+        public readonly IContaRepository _ContaRepository;
 
         public MesaController(IJsonAutoMapper jsonAutoMapper, IMesaNegocio _imesaNegocio, 
-            IConsumoRepository IConsumoRepository)
+            IConsumoRepository IConsumoRepository, IContaRepository _contaRepository)
         {
             _JsonAutoMapper = jsonAutoMapper;
             _MesaRepository = new MesaRepository();
             _ConsumoRepository = IConsumoRepository;
             _IMesaNegocio = _imesaNegocio;
+            _ContaRepository = _contaRepository;
             _ProdutoRepository = new ProdutoRepository();
         }
 
@@ -62,6 +64,14 @@ namespace FoodServiceApi.Controllers
                 mesa.status = StatusMesa.Aberto.Value;
                 mesa.seqAbreMesa = _MesaRepository.ObterUltimaSeqAbreMesa(codMesa,numeroMesa);
                 _MesaRepository.update(mesa);
+                var novaConta = new Conta()
+                {
+                    dataAbertura = DateTime.Now,
+                    seqAbreMesa = mesa.seqAbreMesa,
+                    numeroMesa =  mesa.numero,
+                    status = "A", //Mesa aberta
+                };
+                _ContaRepository.Add(novaConta);
                 return _JsonAutoMapper.Resposta("Mesa aberta com sucesso! Mesa disponível para adicionar consumos.");
             }
             catch (Exception e)
@@ -73,7 +83,7 @@ namespace FoodServiceApi.Controllers
 
         [Route("FechamentoMesa")]
         [HttpPost]
-        public ActionResultado FechamentoMesa(int codMesa, string seqAbreMesa)
+        public ActionResultado FechamentoMesa(int codMesa, string seqAbreMesa, decimal totalFechamento)
         {
             try
             {
@@ -86,6 +96,13 @@ namespace FoodServiceApi.Controllers
                     _ConsumoRepository.Update(consumo);
                 }
                 _MesaRepository.update(mesa);
+
+                var contaAberta = _ContaRepository.ObterContaAberta(seqAbreMesa);
+                contaAberta.status = "P"; //Pendente de pagamento e baixa no caixa
+                contaAberta.total = totalFechamento;
+                contaAberta.dataFechamento = DateTime.Now;
+
+                _ContaRepository.Update(contaAberta);
                 return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistema em: Caixa>Cupom fiscal");
             }
             catch (Exception e)

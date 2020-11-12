@@ -124,7 +124,7 @@ function AbrirMesa(numeroMesa, codMesa) {
 
 
 
-function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa) {
+function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa,totalFechamento) {
     $("#ModalConfirm").modal();
     $("#ModalConfirm .modal-body").text("Atenção, deseja realizar fechamento da Mesa " + numeroMesa + " ?");
 
@@ -140,7 +140,7 @@ function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa) {
             $.ajax({
                 url: "/Mesa/FechamentoMesa",
                 type: 'Post',
-                data: { codMesa: codMesa, seqAbreMesa: seqAbreMesa },
+                data: { codMesa: codMesa, seqAbreMesa: seqAbreMesa, totalFechamento: totalFechamento },
                 cache: false,
                 async: true,
             }).done(function (data) {
@@ -152,7 +152,6 @@ function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa) {
                 $("#ButtonConfirm").prop("disabled", false);
 
                 btn.addEventListener('click', function (evt) {
-                   
                     window.location = '/Caixa/CupomNaoFiscal?seqAbreMesa='+seqAbreMesa;
                 });
                     

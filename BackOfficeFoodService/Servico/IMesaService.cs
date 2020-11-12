@@ -14,7 +14,7 @@ namespace BackOfficeFoodService.Servico
         [Post("/Mesa/AbrirMesa")]
         Task<ActionResultado> AbrirMesa(int codMesa, int numeroMesa);
         [Post("/Mesa/FechamentoMesa")]
-        Task<ActionResultado> FechamentoMesa(int codMesa, string seqAbreMesa);
+        Task<ActionResultado> FechamentoMesa(int codMesa, string seqAbreMesa, decimal totalFechamento);
         [Post("/Mesa/AdicionaConsumoMesa")]
         Task<ActionResultado> AdicionaConsumoMesa(ConsumoModel ConsumoModel);
         [Get("/Mesa/ObterListaMesa")]

@@ -12,6 +12,6 @@ namespace BackOfficeFoodService.Servico
         [Get("/Caixa/ObterListaFormaPagamento")]
         Task<List<FormaPagamentoModel>> ObterListaPagamento();
         [Get("/Caixa/ObterContaPendente")]
-        Task<List<FormaPagamentoModel>> ObterContaPendente(string seqAbreConta);
+        Task<ContaModel> ObterContaPendente(string seqAbreMesa);
     }
 }

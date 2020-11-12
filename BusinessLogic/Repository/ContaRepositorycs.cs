@@ -27,14 +27,23 @@ namespace Aplication.Repository
             _repositoryGeneric.Add(conta);
         }
 
+        public Conta ObterContaAberta(string seqAbreMesa)
+        {
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
+        }
+
         public Conta ObterContaPendente(string seqAbreMesa)
         {
-            throw new NotImplementedException();
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
         }
 
         public IEnumerable<FormaPagamento> ObterListaFormaPagamento()
         {
             return _context.FormaPagamento.ToList();
+        }
+        public void Update(Conta conta)
+        {
+             _repositoryGeneric.Update(conta);
         }
     }
 }
