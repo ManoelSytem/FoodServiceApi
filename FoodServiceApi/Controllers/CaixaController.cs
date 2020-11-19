@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interface;
+using Aplication.Model;
 using Aplication.Util;
 using Dominio;
 using FoodServiceApi.Model;
@@ -46,6 +47,26 @@ namespace FoodServiceApi.Controllers
             var listaFormaPagamento = _ContaRepository.ObterListaFormaPagamento();
             var listaFormaPagamentoModel = _JsonAutoMapper.ConvertAutoMapperJson<List<FormaPagamentoModel>>(listaFormaPagamento);
             return listaFormaPagamentoModel;
+        }
+
+        [Route("BaixaConta")]
+        [HttpPost]
+        public ActionResultado BaixaConta(decimal valorEntrada, string formaPgto, int codigoConta)
+        {
+            try
+            {
+                var conta = _ContaRepository.ObterContaPorCondigo(codigoConta);
+                conta.valorEntrada = valorEntrada;
+                conta.formaPagamento = formaPgto;
+                conta.dataBaixaConta = DateTime.Now;
+                conta.status = "F";
+                _ContaRepository.Update(conta);
+                return _JsonAutoMapper.Resposta("Baixa realizada com sucesso!");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
         }
     }
 }

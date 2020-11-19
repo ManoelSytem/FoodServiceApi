@@ -9,18 +9,23 @@
         cache: false,
         async: true,
     }).done(function (data) {
-        var today = new Date();
         if (data != undefined) {
+            var todayDataAbertura = new Date(data['dataAbertura']);
+            var todayDataFechamento = new Date(data['dataFechamento']);
             $("#CupomFiscal").html("");
             $('#seqAbreMesa').val(data['seqAbreMesa']);
-            $('#total').val(formatarValorReal(data['total']));
+            var total = data['total'];
+            totalFormatado = formatarValorReal(total);
+            $('#total').val(totalFormatado);
             $('#totalReal').val(data['total']);
             $('#numeroMesa').text("Mesa Número: " + data['seqAbreMesa']);
-            $('#DataAbertura').text("Data Hora abertura mesa: " + today.toLocaleString("pt-BR",data['dataAbertura']));
-            $('#DataFehamento').text("Data Hora Fechamento mesa: " + today.toLocaleString("pt-BR", data['DataFechamento']));
+            $('#DataAbertura').text("Data Hora abertura mesa: " + todayDataAbertura.toLocaleString());
+            $('#DataFehamento').text("Data Hora Fechamento mesa: " + todayDataFechamento.toLocaleString());
             $('#CupomFiscal').append(
-                '<button onclick="ObterCupomFiscalNovaGuia('+data['seqAbreMesa']+')" type = "button" class= "btn btn-dark" > Cupom Não fiscal</button'
-            )
+                '<button onclick="ObterCupomFiscalNovaGuia(' + data['seqAbreMesa'] + ')" type = "button" class= "btn btn-dark" > Cupom Não fiscal</button>'
+            );
+            $('#RealizarBaixa').append(
+                '<button onclick="RealizarBaixa(' + data['codigo'] + ')" type = "button" class="btn btn-primary" >RealizarBaixa</button>'  );
 
         } else {
             $("#ModalGenric").modal();
@@ -52,31 +57,71 @@ $("#SelectFormaPagamento").change(function () {
 
 $("#valorEntrada").keyup(function () {
 
-   s if ($("#valorEntrada").val().match(regra) != null && $("#total").val().match(regra) != null) {
-        var total = $('#total').val();
-        var entrada = $('#valorEntrada').val();
-        troco = formatNumber(total) - formatNumber(entrada);
-        $('#totalTroco').val(troco);
+    if ($("#valorEntrada").val() != "" && $("#totalReal").val() != "") {
+
+        $.ajax({
+            url: "/Caixa/CalcularTroco",
+            type: 'Get',
+            data: { valorEntrada: $("#valorEntrada").val().replace(",", "."), ValorTotal: $("#totalReal").val() },
+            cache: false,
+            async: true,
+        }).done(function (data) {
+            $('#totalTroco').val(formatarValorReal(data));
+        }).fail(function (data) {
+            $('#totalTroco').val("");
+        });;
+
     } else {
         $('#totalTroco').val("");
     }
+
 });
 
 function formatarValorReal(valor) {
    
-    const currencyBRL = (valor) => {
         const formattedValue = valor.toLocaleString(
             'pt-BR',
             { style: 'currency', currency: 'BRL' }
         );
-
         return formattedValue;
-    };
-
-    return currencyBRL;
 }
 
-function formatNumber(value) {
-    value = convertToFloatNumber(value);
-    return value.formatMoney(2, '.', '');
+
+
+function RealizarBaixa(codigoConta) {
+
+    var formaPagamentoValor = $('#SelectFormaPagamento option:selected').val();
+
+    var formaPagamentoText = $('#SelectFormaPagamento option:selected').text();
+
+    if (formaPagamentoText == "Selecione...") {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text("Selecione a forma de Pagamento");
+        return;
+    }
+
+    if (formaPagamentoText == "Dinheiro") {
+        if ($("#valorEntrada").val() == "") {
+            $("#ModalGenric").modal();
+            $("#ModalGenric .modal-body").text("Método de pagamento selecionado Dinheiro, informe o valor de entrada.");
+            return;
+        }
+    }
+
+
+    $.ajax({
+        url: "/Caixa/RealizaBaixaConta",
+        type: 'Post',
+        data: { valorEntrada: $("#valorEntrada").val().replace(",", "."), formaPgto: formaPagamentoValor, codigoConta: codigoConta },
+        cache: false,
+        async: true,
+    }).done(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    }).fail(function (data) {
+        $("#ModalGenric").modal();
+        $("#ModalGenric .modal-body").text(data['responseText']);
+    });;
+
 }
+

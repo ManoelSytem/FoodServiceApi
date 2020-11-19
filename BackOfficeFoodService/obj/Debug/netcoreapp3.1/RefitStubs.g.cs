@@ -72,6 +72,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("ObterContaPendente", new Type[] { typeof(string) });
             return (Task<ContaModel>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<ActionResultado> ICaixaService.BaixaConta(decimal valorEntrada, string formaPgto, int codigoConta)
+        {
+            var arguments = new object[] { valorEntrada, formaPgto, codigoConta };
+            var func = requestBuilder.BuildRestResultFuncForMethod("BaixaConta", new Type[] { typeof(decimal), typeof(string), typeof(int) });
+            return (Task<ActionResultado>)func(Client, arguments);
+        }
     }
 }
 

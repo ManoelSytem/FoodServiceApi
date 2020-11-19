@@ -24,13 +24,13 @@ namespace BackOfficeFoodService.Controllers
             {
                 if (AutenticanteVerifiy())
                 {
-                  
+
                     var ICliente = RestService.For<IClienteServico>(Servico.Servico.UrlBaseFoodService());
                     var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
-                    var dadosEmpresaCleinte =  await ICliente.ObterClientePorEmail(email);
+                    var dadosEmpresaCleinte = await ICliente.ObterClientePorEmail(email);
 
                     var IMesaService = RestService.For<IMesaService>(Servico.Servico.UrlBaseFoodService());
-                    var consumoModel = await IMesaService.ObterConsumoDaMesa(seqAbreMesa,true);
+                    var consumoModel = await IMesaService.ObterConsumoDaMesa(seqAbreMesa, true);
 
                     CupomNaoFiscalModel cupomNaoFiscalModel = new CupomNaoFiscalModel();
                     cupomNaoFiscalModel.cliente = dadosEmpresaCleinte;
@@ -47,7 +47,7 @@ namespace BackOfficeFoodService.Controllers
         {
             var ICaixa = RestService.For<ICaixaService>(Servico.Servico.UrlBaseFoodService());
             var contaModel = await ICaixa.ObterContaPendente(seqAbreMesa);
-            return contaModel;  
+            return contaModel;
         }
         public async Task<IActionResult> ContaAReceber()
         {
@@ -66,7 +66,30 @@ namespace BackOfficeFoodService.Controllers
             }
 
         }
+        public decimal CalcularTroco(decimal valorEntrada, decimal ValorTotal)
+        {
+            Decimal total = 0;
+            if(valorEntrada != 0 && valorEntrada > ValorTotal) { 
+                total =  ValorTotal - valorEntrada;
+            }
+            return total;
+        }
 
+        public async Task<ResultApi> RealizaBaixaConta(decimal valorEntrada, string formaPgto, int codigoConta)
+        {
+            try
+            {
+                var ICaixa = RestService.For<ICaixaService>(Servico.Servico.UrlBaseFoodService());
+                var response = await ICaixa.BaixaConta(valorEntrada, formaPgto, codigoConta);
+                var result = new ResultApi { description = response.Message, erro = false };
+                return result;
 
+            }
+            catch (Exception ex)
+            {
+                var result = new ResultApi { description = "Erro server : " + ex.Message, erro = true };
+                return result;
+            }
+        }
     }
 }

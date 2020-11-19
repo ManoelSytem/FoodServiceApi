@@ -12,5 +12,6 @@ namespace Aplication.Interface
         public IEnumerable<FormaPagamento> ObterListaFormaPagamento();
         public Conta ObterContaAberta(string seqAbreMesa);
         public void Update(Conta conta);
+        public Conta ObterContaPorCondigo(int codigo);
     }
 }

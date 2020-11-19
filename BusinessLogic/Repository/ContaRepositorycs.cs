@@ -29,12 +29,17 @@ namespace Aplication.Repository
 
         public Conta ObterContaAberta(string seqAbreMesa)
         {
-            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa && c.status == "A").FirstOrDefault();
         }
 
         public Conta ObterContaPendente(string seqAbreMesa)
         {
-            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa && c.status == "P").FirstOrDefault();
+        }
+
+        public Conta ObterContaPorCondigo(int codigo)
+        {
+            return _repositoryGeneric.Get().Where(c => c.codigo == codigo).FirstOrDefault();
         }
 
         public IEnumerable<FormaPagamento> ObterListaFormaPagamento()

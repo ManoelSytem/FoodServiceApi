@@ -1,3 +1,4 @@
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -352,7 +353,6 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcor
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
