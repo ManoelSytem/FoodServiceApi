@@ -45,49 +45,6 @@ function ObterCupomFiscalNovaGuia(seqAbreMesa) {
     window.open('/Caixa/CupomNaoFiscal?seqAbreMesa=' + seqAbreMesa, '_blank');
 }
 
-$("#SelectFormaPagamento").change(function () {
-    var formaPagamento =  $('#SelectFormaPagamento option:selected').text();
-
-    if (formaPagamento == "Dinheiro") {
-        $("#valorEntrada").prop('disabled', false);
-    } else {
-        $("#valorEntrada").prop('disabled', true);
-    }
-});
-
-$("#valorEntrada").keyup(function () {
-
-    if ($("#valorEntrada").val() != "" && $("#totalReal").val() != "") {
-
-        $.ajax({
-            url: "/Caixa/CalcularTroco",
-            type: 'Get',
-            data: { valorEntrada: $("#valorEntrada").val().replace(",", "."), ValorTotal: $("#totalReal").val() },
-            cache: false,
-            async: true,
-        }).done(function (data) {
-            $('#totalTroco').val(formatarValorReal(data));
-        }).fail(function (data) {
-            $('#totalTroco').val("");
-        });;
-
-    } else {
-        $('#totalTroco').val("");
-    }
-
-});
-
-function formatarValorReal(valor) {
-   
-        const formattedValue = valor.toLocaleString(
-            'pt-BR',
-            { style: 'currency', currency: 'BRL' }
-        );
-        return formattedValue;
-}
-
-
-
 function RealizarBaixa(codigoConta) {
 
     var formaPagamentoValor = $('#SelectFormaPagamento option:selected').val();
@@ -124,4 +81,50 @@ function RealizarBaixa(codigoConta) {
     });;
 
 }
+
+function formatarValorReal(valor) {
+
+    const formattedValue = valor.toLocaleString(
+        'pt-BR',
+        { style: 'currency', currency: 'BRL' }
+    );
+    return formattedValue;
+}
+
+
+
+$("#SelectFormaPagamento").change(function () {
+    var formaPagamento =  $('#SelectFormaPagamento option:selected').text();
+
+    if (formaPagamento == "Dinheiro") {
+        $("#valorEntrada").prop('disabled', false);
+    } else {
+        $("#valorEntrada").prop('disabled', true);
+    }
+});
+
+$("#valorEntrada").keyup(function () {
+
+    if ($("#valorEntrada").val() != "" && $("#totalReal").val() != "") {
+
+        $.ajax({
+            url: "/Caixa/CalcularTroco",
+            type: 'Get',
+            data: { valorEntrada: $("#valorEntrada").val().replace(",", "."), ValorTotal: $("#totalReal").val() },
+            cache: false,
+            async: true,
+        }).done(function (data) {
+            $('#totalTroco').val(formatarValorReal(data));
+        }).fail(function (data) {
+            $('#totalTroco').val("");
+        });;
+
+    } else {
+        $('#totalTroco').val("");
+    }
+
+});
+
+
+
 
