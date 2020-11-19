@@ -74,10 +74,13 @@ function RealizarBaixa(codigoConta) {
         async: true,
     }).done(function (data) {
         $("#ModalGenric").modal();
-        $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#ModalGenric .modal-body").text(data['description']);
+        $("#ModalGenric").on('hide.bs.modal', function () {
+            window.location = '/Caixa/ContaAReceber';
+        });
     }).fail(function (data) {
         $("#ModalGenric").modal();
-        $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#ModalGenric .modal-body").text(data['description']);
     });;
 
 }

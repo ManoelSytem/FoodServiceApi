@@ -111,7 +111,7 @@ namespace BackOfficeFoodService.Controllers
                         ProdutoModel novoProduto = new ProdutoModel();
                         novoProduto.nome = collection["nome"];
                         novoProduto.descricao = collection["descricao"];
-                        novoProduto.valor = Convert.ToDecimal(collection["valor"]);
+                        novoProduto.valor = Convert.ToDecimal(collection["valorDecimal"]);
                         novoProduto.cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                         var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
                         var result = await IProduto.Edicao(id,novoProduto);

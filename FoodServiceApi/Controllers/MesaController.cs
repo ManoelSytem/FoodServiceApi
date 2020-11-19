@@ -97,7 +97,7 @@ namespace FoodServiceApi.Controllers
                 }
                 _MesaRepository.update(mesa);
 
-                var contaAberta = _ContaRepository.ObterContaAberta(seqAbreMesa);
+                var contaAberta = _ContaRepository.ObterConta(seqAbreMesa);
                 contaAberta.status = "P"; //Pendente de pagamento e baixa no caixa
                 contaAberta.total = totalFechamento;
                 contaAberta.dataFechamento = DateTime.Now;

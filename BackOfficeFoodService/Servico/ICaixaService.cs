@@ -13,7 +13,7 @@ namespace BackOfficeFoodService.Servico
         Task<List<FormaPagamentoModel>> ObterListaPagamento();
         [Get("/Caixa/ObterContaPendente")]
         Task<ContaModel> ObterContaPendente(string seqAbreMesa);
-        [Get("/Caixa/BaixaConta")]
+        [Post("/Caixa/BaixaConta")]
         Task<ActionResultado> BaixaConta(decimal valorEntrada, string formaPgto, int codigoConta);
     }
 }

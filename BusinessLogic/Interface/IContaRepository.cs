@@ -13,5 +13,6 @@ namespace Aplication.Interface
         public Conta ObterContaAberta(string seqAbreMesa);
         public void Update(Conta conta);
         public Conta ObterContaPorCondigo(int codigo);
+        public Conta ObterConta(string seqAbreMesa);
     }
 }

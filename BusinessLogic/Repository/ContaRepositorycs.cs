@@ -31,6 +31,10 @@ namespace Aplication.Repository
         {
             return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa && c.status == "A").FirstOrDefault();
         }
+        public Conta ObterConta(string seqAbreMesa)
+        {
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
+        }
 
         public Conta ObterContaPendente(string seqAbreMesa)
         {
