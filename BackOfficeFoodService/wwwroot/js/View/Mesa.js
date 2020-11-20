@@ -102,7 +102,8 @@ function AdicionarConsumo(codMesa, codProduto) {
 }
 
 function AbrirMesa(numeroMesa, codMesa) {
-
+    $("#overlay").fadeIn();　
+   
     $.ajax({
         url: "/Mesa/AbrirMesa",
         type: 'Post',
@@ -114,12 +115,14 @@ function AbrirMesa(numeroMesa, codMesa) {
         $("#ModalGenric .modal-body").text(data['description']);
         $("#ModalGenric").on('hide.bs.modal', function () {
                  window.location.href = 'GerenciaMesa';
-             });
-
+        });
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
+  
 }
 
 

@@ -1,6 +1,7 @@
 ﻿var TituloGlobalSalvar = '';
 
 function CreateListCardapio(idcardapio, tituloCardapio) {
+    $("#overlay").fadeIn();
     TituloGlobalSalvar = '';
     var idCaradpio = idcardapio;
     var tituloCardapio = tituloCardapio;
@@ -15,14 +16,17 @@ function CreateListCardapio(idcardapio, tituloCardapio) {
         $("#modal-body").html(data);
         $("#custId").val(idCaradpio);
         buscaListaCardapio(idcardapio, tituloCardapio);
+        $("#overlay").fadeOut();
     }).fail(function () {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
 }
 
 
 function SalveMenuListCardapio() {
+    $("#overlay").fadeIn();
     $("#SalvaMenuLista").attr("disabled", true);
     $("#wait").css("display", "block");
     var idcardapio = $("#custId").val();
@@ -42,15 +46,18 @@ function SalveMenuListCardapio() {
         buscaListaCardapio(idcardapio, "");
         $("#wait").css("display", "none");
         $("#SalvaMenuLista").attr("disabled", false);
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
 }
 
 
 
 function buscaListaCardapio(idcardapio, tituloCardapio) {
+    $("#overlay").fadeIn();
         $("#wait").css("display", "block");
     $.ajax({
         url: "/Cardapio/BuscarMenuListaCardapio",
@@ -63,15 +70,18 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
         $("#Menu").html(ListaMenuHtml);
         $("#MenuCadapio").text("Cardápio Selecionado : " + TituloGlobalSalvar);
         $("#wait").css("display", "none");
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
 
 }
 
 
 function ExcluirMenuLista(codMenuSeq) {
+    $("#overlay").fadeIn();
     var idcardapio = $("#custId").val();
     $.ajax({
         url: "/Cardapio/DeleteMenuListaCardapio",
@@ -84,15 +94,17 @@ function ExcluirMenuLista(codMenuSeq) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['description']);
         $("#wait").css("display", "none");
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
 
 }
 
 function AlterarMenuListaCardapio() {
-
+    $("#overlay").fadeIn();
     $("#wait").css("display", "block");
     var idcardapio = $("#custId").val();
     var titulo = $('#tituloMenu').val();
@@ -111,15 +123,16 @@ function AlterarMenuListaCardapio() {
         buscaListaCardapio(idcardapio, "");
         $("#wait").css("display", "none");
         $("#SalvaMenuLista").attr("disabled", false);
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
 
 }
 
 function PreencherDadosFormularioAlteracao(codMenu) {
-
     $("#SalvaMenuLista").css("display", "none");
     $("#AlterarMenuLista").css("display", "block");
 
@@ -149,7 +162,6 @@ function PreencherDadosFormularioAlteracao(codMenu) {
            
         }
         $('#SelectProduto').val(ArrayIdProdutos);
-
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);

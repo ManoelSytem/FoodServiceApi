@@ -1,5 +1,5 @@
 ﻿function BuscarConta() {
-
+    $("#overlay").fadeIn();
     var seqAbreMesa = $("#seqAbreMesa").val();
 
     $.ajax({
@@ -34,11 +34,13 @@
                 window.location = '/Caixa/ContaAReceber';
             });
         }
-
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
+        $("#overlay").fadeOut();
     });;
+    
 }
 
 function ObterCupomFiscalNovaGuia(seqAbreMesa) {
@@ -46,7 +48,7 @@ function ObterCupomFiscalNovaGuia(seqAbreMesa) {
 }
 
 function RealizarBaixa(codigoConta) {
-
+    $("#overlay").fadeIn();
     var formaPagamentoValor = $('#SelectFormaPagamento option:selected').val();
 
     var formaPagamentoText = $('#SelectFormaPagamento option:selected').text();
@@ -78,11 +80,13 @@ function RealizarBaixa(codigoConta) {
         $("#ModalGenric").on('hide.bs.modal', function () {
             window.location = '/Caixa/ContaAReceber';
         });
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['description']);
+        $("#overlay").fadeOut();
     });;
-
+    
 }
 
 function formatarValorReal(valor) {
