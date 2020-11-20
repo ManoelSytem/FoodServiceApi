@@ -26,8 +26,15 @@ using BackOfficeFoodService.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\Views\_ViewImports.cshtml"
+using System.Globalization;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a27bcbb3768f344bacd9a22c59b7e5b5609de752", @"/Views/Mesa/GerenciaMesa.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"70d193d557837f2b633dd17c79cdd56a162662ee", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f2bb2ee245e2d1a76fd1b38cdb768655686e0836", @"/Views/_ViewImports.cshtml")]
     public class Views_Mesa_GerenciaMesa : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<BackOfficeFoodService.Models.MesaModel>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("style", new global::Microsoft.AspNetCore.Html.HtmlString("width:45px;height:45px"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -98,7 +105,7 @@ using BackOfficeFoodService.Models;
 #line hidden
 #nullable disable
             WriteLiteral("                            <p class=\"card-text\">Status da Mesa:  ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a27bcbb3768f344bacd9a22c59b7e5b5609de7526859", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a27bcbb3768f344bacd9a22c59b7e5b5609de7527058", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -145,7 +152,7 @@ WriteAttributeValue(" ", 805, item.codigo, 806, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            <p class=\"card-text\">Status da Mesa:  ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a27bcbb3768f344bacd9a22c59b7e5b5609de7529425", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a27bcbb3768f344bacd9a22c59b7e5b5609de7529624", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

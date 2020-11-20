@@ -48,9 +48,18 @@
                             @Html.DisplayFor(modelItem => item.titulo)
                         </td>
                         <td>
-                            <div  id="cadapioPrincipal" class="col-md text-center custom-control custom-radio">
-                                    <input class="form-check-input " type="radio" name="cardprincipal"  value="@item.idCardapio" >
-                            </div>
+                            @if (item.ePrincipal == "S")
+                            {
+                                <div id="cadapioPrincipal" class="col-md text-center custom-control custom-radio">
+                                    <input class="form-check-input " type="radio" name="cardprincipal" value="@item.idCardapio" checked>
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="cadapioNaoChecado" class="col-md text-center custom-control custom-radio">
+                                    <input class="form-check-input " type="radio" name="cardNaoChecado" value="@item.idCardapio">
+                                </div>
+                            }
                         </td>
                         <td>
                             <a href="#" ; onclick="CreateListCardapio('@item.idCardapio', '@item.titulo');">Lista de Menu </a>

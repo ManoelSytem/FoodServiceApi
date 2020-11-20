@@ -82,6 +82,10 @@ namespace Aplication.Servico
 
         public void DefenirCardapioPrincipal(int codCardapio)
         {
+            IEnumerable<Cardapio> listCardapio = _uow.CardapioRepository.Get();
+            listCardapio.ToList().ForEach(c => c.ePrincipal = "");
+            _uow.Commit();
+
             var cardapio = _uow.CardapioRepository.Get(x => x.idCardapio == codCardapio).Single();
             cardapio.ePrincipal = "S";
             _uow.CardapioRepository.Update(cardapio);

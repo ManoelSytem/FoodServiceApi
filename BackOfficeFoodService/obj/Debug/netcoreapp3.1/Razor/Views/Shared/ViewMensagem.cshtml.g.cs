@@ -27,6 +27,13 @@ using BackOfficeFoodService.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\Views\_ViewImports.cshtml"
+using System.Globalization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\Views\Shared\ViewMensagem.cshtml"
 using BackOfficeFoodService.Enum;
 
@@ -34,7 +41,7 @@ using BackOfficeFoodService.Enum;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5455920fb658a78ff94eb2182c1e92b9f162b24d", @"/Views/Shared/ViewMensagem.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"70d193d557837f2b633dd17c79cdd56a162662ee", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f2bb2ee245e2d1a76fd1b38cdb768655686e0836", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_ViewMensagem : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

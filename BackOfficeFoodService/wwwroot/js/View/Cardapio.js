@@ -303,6 +303,12 @@ $("#cadapioPrincipal").on('change', "input[name=cardprincipal]", function () {
     DefinirCardapioPrincipal(codCardapio);
 });
 
+$("#cadapioNaoChecado").on('change', "input[name=cardNaoChecado]", function () {
+
+    var codCardapio = $('input[name=cardNaoChecado]:checked', '#cadapioNaoChecado').val();
+    DefinirCardapioPrincipal(codCardapio);
+});
+
 function DefinirCardapioPrincipal(codCardapio) {
 
     

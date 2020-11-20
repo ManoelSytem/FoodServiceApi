@@ -18,7 +18,7 @@
             totalFormatado = formatarValorReal(total);
             $('#total').val(totalFormatado);
             $('#totalReal').val(data['total']);
-            $('#numeroMesa').text("Mesa Número: " + data['seqAbreMesa']);
+            $('#numeroMesa').text("Mesa Número: " + data['numeroMesa']);
             $('#DataAbertura').text("Data Hora abertura mesa: " + todayDataAbertura.toLocaleString());
             $('#DataFehamento').text("Data Hora Fechamento mesa: " + todayDataFechamento.toLocaleString());
             $('#CupomFiscal').append(
@@ -69,7 +69,7 @@ function RealizarBaixa(codigoConta) {
     $.ajax({
         url: "/Caixa/RealizaBaixaConta",
         type: 'Post',
-        data: { valorEntrada: $("#valorEntrada").val().replace(",", "."), formaPgto: formaPagamentoValor, codigoConta: codigoConta },
+        data: { valorEntrada: $("#valorEntrada").val(), formaPgto: formaPagamentoValor, codigoConta: codigoConta },
         cache: false,
         async: true,
     }).done(function (data) {

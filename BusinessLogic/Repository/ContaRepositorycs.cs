@@ -33,7 +33,7 @@ namespace Aplication.Repository
         }
         public Conta ObterConta(string seqAbreMesa)
         {
-            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa).FirstOrDefault();
+            return _repositoryGeneric.Get().Where(c => c.seqAbreMesa == seqAbreMesa && c.status != "F").FirstOrDefault();
         }
 
         public Conta ObterContaPendente(string seqAbreMesa)
