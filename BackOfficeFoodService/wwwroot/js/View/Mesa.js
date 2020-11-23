@@ -83,6 +83,8 @@ function ObjetoHtmlListMenuCardapioPrincipal(cardapio, codMesa) {
 
 function AdicionarConsumo(codMesa, codProduto) {
 
+    var formaPagamento = $('#SelectFormaPagamento option:selected').text();
+
     $.ajax({
         url: "/Mesa/AdicionarConsumoMesa",
         type: 'Post',

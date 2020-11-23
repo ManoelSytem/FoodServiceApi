@@ -143,6 +143,38 @@ namespace FoodServiceApi.Controllers
         }
 
 
+
+        [Route("AdicionaConsumoMesaPWA")]
+        [HttpPost]
+        public ActionResultado AdicionaConsumoMesaPWA(string codMesa, string codProduto)
+        {
+            try
+            {
+                var consumoModel = new ConsumoModel
+                {
+                    codMesa = codMesa,
+                    codProduto = codProduto,
+                    horaPedido = DateTime.Now,
+                    
+                };
+                var mesa = _MesaRepository.GetbyId(Convert.ToInt32(consumoModel.codMesa));
+                _IMesaNegocio.VerificarMesaAberta(mesa);
+
+                Consumo consumo = _JsonAutoMapper.ConvertAutoMapperJson<Consumo>(consumoModel);
+                consumo.horaPedido = DateTime.Now;
+                consumo.seqAbreMesa = mesa.seqAbreMesa;
+
+                _ConsumoRepository.Add(consumo);
+                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso na mesa " + mesa.numero + ".");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+        }
+
+
+
         [Route("ObterConsumoDaMesa")]
         [HttpGet]
         public List<ConsumoModel> ObterConsumoDaMesa(string seqAbreMesa, bool EcupomFiscal)

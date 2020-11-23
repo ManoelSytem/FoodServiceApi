@@ -36,6 +36,12 @@ namespace FoodServiceApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "Open",
+                    builder => builder.AllowAnyOrigin().AllowAnyHeader());
+            });
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson();
             services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
@@ -58,7 +64,7 @@ namespace FoodServiceApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("Open");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

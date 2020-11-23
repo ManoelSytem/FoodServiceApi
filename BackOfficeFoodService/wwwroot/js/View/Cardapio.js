@@ -323,8 +323,8 @@ $("#cadapioNaoChecado").on('change', "input[name=cardNaoChecado]", function () {
 
 function DefinirCardapioPrincipal(codCardapio) {
 
-    
-
+    $("#overlay").fadeIn();
+   
     $.ajax({
         url: "/Cardapio/DefinirCardapioPrincipal",
         type: 'Put',
@@ -338,12 +338,14 @@ function DefinirCardapioPrincipal(codCardapio) {
             window.location.href = 'create';
         });
         $("#wait").css("display", "none");
+        $("#overlay").fadeOut();
     }).fail(function (data) {
         $("#ModalGenric").modal();
         $("#ModalGenric .modal-body").text(data['responseText']);
         $("#ModalGenric").on('hide.bs.modal', function () {
             window.location.href = 'create';
         });
+        $("#overlay").fadeOut();
     });;
 
 }

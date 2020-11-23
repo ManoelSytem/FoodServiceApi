@@ -42,6 +42,12 @@ namespace Aplication.Servico
             return _uow.ProdutoItemRepository.Get(p => p.codigoCardapio == IdCardapio && p.delete != "1");
         }
 
+
+        public IEnumerable<ListaItemProduto> ObterMenuPorCodMenuSeq(string codMenuSeq)
+        {
+            return _uow.ProdutoItemRepository.Get(p => p.codMenuSeq == codMenuSeq && p.delete != "1");
+        }
+
         public void Excluir(int id)
         {
             var cardapio = _uow.CardapioRepository.Get(x => x.idCardapio == id).Single();

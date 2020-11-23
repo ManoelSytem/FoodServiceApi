@@ -159,10 +159,6 @@ namespace FoodServiceApi.Controllers
 
         }
 
-
-        
-
-
         [HttpGet]
         [Route("GetListMenuCardapioPorId")]
         public List<MenuModel> GetListMenu(int idCardapio)
@@ -170,6 +166,25 @@ namespace FoodServiceApi.Controllers
             var listaMenuCardapio = _CardapioService.ObterListaMenuCardapioPorId(idCardapio);
             var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<MenuModel>(listaMenuCardapio);
             return listMenuCardapioModel;
+        }
+
+        [HttpGet]
+        [Route("GetCardapioPrincipalMenu")]
+        public List<MenuModel> GetCardapioPrincipalMenu()
+        {
+            var cardapioPrincipal = _CardapioService.ObterCardapioPrincipal();
+            var listaMenuCardapio = _CardapioService.ObterListaMenuCardapioPorId(cardapioPrincipal.idCardapio).Distinct();
+            var listMenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<MenuModel>(listaMenuCardapio);
+            return listMenuCardapioModel;
+        }
+
+        [HttpGet]
+        [Route("GetMenuPorMenuSeq")]
+        public List<MenuModel> GetMenuPorMenuSeq(string codSeqMenu)
+        {
+            var MenuCardapio = _CardapioService.ObterMenuPorCodMenuSeq(codSeqMenu);
+            var MenuCardapioModel = _JsonAutoMapper.ConvertAutoMapperListJson<MenuModel>(MenuCardapio);
+            return MenuCardapioModel;
         }
 
 
