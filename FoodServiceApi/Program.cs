@@ -17,9 +17,10 @@ namespace FoodServiceApi
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).UseWindowsService()
+            Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("https://localhost:5003/");
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("0d3d1f03-9393-4bc1-96e4-a0cf30a74f63")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("BackOfficeFoodService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
