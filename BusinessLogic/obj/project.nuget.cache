@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Tv7tJ0egF3KOIqiE2YfBxkYUG/kSm3WVRnqpA0Hhp4GQwTTCOVzwBPVMjYEkJr6z8y8AHrF6aLF6jGQajJQf0A==",
+  "dgSpecHash": "TZYwnJm1GFEje+zhKkOYm0D8ad0RO8B74aSoPK5Pp80gD9ij3coguv8I8zt6O1afGzfLe+e1TJIbJRDJtA5aDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
   "expectedPackageFiles": [
@@ -27,7 +27,7 @@
     "C:\\Users\\Tees\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.0\\microsoft.extensions.primitives.3.1.0.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\mysqlconnector\\0.61.0\\mysqlconnector.0.61.0.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Tees\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\3.1.2\\pomelo.entityframeworkcore.mysql.3.1.2.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\pomelo.jsonobject\\2.2.1\\pomelo.jsonobject.2.2.1.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\system.collections.immutable\\1.7.0\\system.collections.immutable.1.7.0.nupkg.sha512",

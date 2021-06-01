@@ -31,7 +31,6 @@ C:\Users\Tees\source\repos\FoodServiceApi\obj\Debug\netcoreapp3.1\FoodServiceApi
 C:\Users\Tees\source\repos\FoodServiceApi\obj\Debug\netcoreapp3.1\FoodServiceApi.RazorAssemblyInfo.cs
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\FoodServiceApi.exe
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\FoodServiceApi.deps.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Debug\netcoreapp3.1\FoodServiceApi.runtimeconfig.json
@@ -75,3 +74,4 @@ C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Debug\netcoreapp3.1
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Debug\netcoreapp3.1\FoodServiceApi.dll
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Debug\netcoreapp3.1\FoodServiceApi.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Debug\netcoreapp3.1\FoodServiceApi.genruntimeconfig.cache
+C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\FoodServiceApi.styles.css
