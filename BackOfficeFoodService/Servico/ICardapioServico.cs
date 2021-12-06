@@ -30,7 +30,7 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> DeleteCardapio(int id, string cliente);
         [Put("/Cardapio/AtualizaCardapio")]
         Task<ActionResultado> AtualizaCardapio(int id, string titulo);
-        [Put("/Cardapio/DefinirCardapioPrincipal")]
+        [Post("/Cardapio/DefinirCardapioPrincipal")]
         Task<ActionResultado> DefinirCardapioPrincipal(int codCardapio);
     }
 }

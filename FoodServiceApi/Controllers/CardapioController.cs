@@ -228,7 +228,7 @@ namespace FoodServiceApi.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("DefinirCardapioPrincipal")]
         public ActionResultado DefinirCardapioPrincipal(int codCardapio)
         {

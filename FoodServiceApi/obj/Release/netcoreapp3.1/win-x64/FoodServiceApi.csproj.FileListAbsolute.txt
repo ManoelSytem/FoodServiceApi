@@ -1,6 +1,5 @@
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\appsettings.Development.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\appsettings.json
-C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\Properties\launchSettings.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\FoodServiceApi.exe
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\FoodServiceApi.deps.json
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\FoodServiceApi.runtimeconfig.json
@@ -32,7 +31,6 @@ C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\Aplication.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\Dominio.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\bin\Release\netcoreapp3.1\win-x64\InfraEstrutura.pdb
-C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.csprojAssemblyReference.cache
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.AssemblyInfoInputs.cache
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.AssemblyInfo.cs
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.csproj.CoreCompileInputs.cache
@@ -44,3 +42,5 @@ C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.dll
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.genruntimeconfig.cache
+C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\scopedcss\bundle\FoodServiceApi.styles.css
+C:\Users\Tees\source\repos\FoodServiceApi\FoodServiceApi\obj\Release\netcoreapp3.1\win-x64\FoodServiceApi.GeneratedMSBuildEditorConfig.editorconfig

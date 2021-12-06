@@ -1,6 +1,5 @@
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\appsettings.Development.json
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\appsettings.json
-C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\Properties\launchSettings.json
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.exe
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.deps.json
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\bin\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.runtimeconfig.json
@@ -418,4 +417,5 @@ C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netc
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.genruntimeconfig.cache
-C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.csprojAssemblyReference.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\scopedcss\bundle\BackOfficeFoodService.styles.css
+C:\Users\Tees\source\repos\FoodServiceApi\BackOfficeFoodService\obj\Release\netcoreapp3.1\win-x64\BackOfficeFoodService.GeneratedMSBuildEditorConfig.editorconfig

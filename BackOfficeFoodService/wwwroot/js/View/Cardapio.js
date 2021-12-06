@@ -327,7 +327,7 @@ function DefinirCardapioPrincipal(codCardapio) {
    
     $.ajax({
         url: "/Cardapio/DefinirCardapioPrincipal",
-        type: 'Put',
+        type: 'Post',
         data: { codCardapio: codCardapio },
         cache: false,
         async: true,

@@ -285,7 +285,7 @@ namespace BackOfficeFoodService.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<ResultApi> DefinirCardapioPrincipal(int codCardapio)
         {
             try

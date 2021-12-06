@@ -9,7 +9,8 @@ C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Debug\netcoreapp3.1\
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Debug\netcoreapp3.1\InfraEstrutura.dll
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Debug\netcoreapp3.1\InfraEstrutura.pdb
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Debug\netcoreapp3.1\Dominio.pdb
-C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.csprojAssemblyReference.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.csproj.AssemblyReference.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.AssemblyInfoInputs.cache
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.AssemblyInfo.cs
 C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Debug\netcoreapp3.1\Aplication.csproj.CoreCompileInputs.cache
