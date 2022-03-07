@@ -50,7 +50,8 @@ namespace BackOfficeFoodService.Controllers
             }
             catch (Exception ex)
             {
-                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                TempData["FlashMessage.Text"] = ex.Message;
+                TempData["FlashMessage.Type"] = "error";
                 return RedirectToAction(nameof(Index));
             }
 
