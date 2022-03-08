@@ -15,5 +15,7 @@ namespace BackOfficeFoodService.Servico
         Task<Token> RegisterUser(LoginModel user);
         [Get("/Autoriza/Authenticated")]
         Task<Usuario> Get(string login, string password);
+        [Post("/Autoriza/logout")]
+        Task<Task> Logout();
     }
 }

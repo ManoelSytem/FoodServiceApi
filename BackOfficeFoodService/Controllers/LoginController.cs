@@ -122,5 +122,20 @@ namespace BackOfficeFoodService.Controllers
                 return View();
             }
         }
+
+        public  ActionResult Logout()
+        {
+            try
+            {
+                var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
+                loginAPI.Logout();
+                HttpContext.Session.Clear();
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction(nameof(Index)); ;
+            }
+        }
     }
 }
