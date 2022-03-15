@@ -296,6 +296,14 @@ namespace BackOfficeFoodService.Servico
             var func = requestBuilder.BuildRestResultFuncForMethod("Get", new Type[] { typeof(string), typeof(string) });
             return (Task<Usuario>)func(Client, arguments);
         }
+
+        /// <inheritdoc />
+        Task<Task> ILoginAPI.Logout()
+        {
+            var arguments = new object[] {  };
+            var func = requestBuilder.BuildRestResultFuncForMethod("Logout", new Type[] {  });
+            return (Task<Task>)func(Client, arguments);
+        }
     }
 }
 
