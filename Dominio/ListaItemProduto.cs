@@ -7,7 +7,7 @@ using System.Text;
 namespace Dominio
 {
 
-    [Table("listaitemproduto")]
+    [Table("itemproduto")]
     public class ListaItemProduto
     {
         [Key]
