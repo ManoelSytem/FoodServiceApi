@@ -424,3 +424,4 @@ FodyWeavers.xsd
 /XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.dgspec.json
 /XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.g.props
 /XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.g.targets
+/FoodServiceApi/.vs/FoodServiceApi/DesignTimeBuild/.dtbcache.v2
