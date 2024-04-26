@@ -1,39 +1,43 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj": {}
+    "C:\\SoftwMicro\\FoodServiceApi\\BusinessLogic\\Aplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj": {
+    "C:\\SoftwMicro\\FoodServiceApi\\BusinessLogic\\Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
+        "projectUniqueName": "C:\\SoftwMicro\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
         "projectName": "Aplication",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
-        "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\BusinessLogic\\obj\\",
+        "projectPath": "C:\\SoftwMicro\\FoodServiceApi\\BusinessLogic\\Aplication.csproj",
+        "packagesPath": "C:\\Users\\CitiLocUser\\.nuget\\packages\\",
+        "outputPath": "C:\\SoftwMicro\\FoodServiceApi\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tees\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\CitiLocUser\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
-                "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj"
+              "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
+                "projectPath": "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj"
               }
             }
           }
@@ -42,11 +46,16 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
@@ -59,7 +68,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -68,37 +78,41 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
+    "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
-        "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\obj\\",
+        "projectPath": "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\CitiLocUser\\.nuget\\packages\\",
+        "outputPath": "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tees\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\CitiLocUser\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -106,18 +120,24 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -126,40 +146,44 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
+    "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+        "projectUniqueName": "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
         "projectName": "InfraEstrutura",
-        "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
-        "packagesPath": "C:\\Users\\Tees\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\obj\\",
+        "projectPath": "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+        "packagesPath": "C:\\Users\\CitiLocUser\\.nuget\\packages\\",
+        "outputPath": "C:\\SoftwMicro\\FoodServiceApi\\InfraEstrutura\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Tees\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\CitiLocUser\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://www.nuget.org/api/v2/": {}
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj"
+              "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\Dominio.csproj": {
+                "projectPath": "C:\\SoftwMicro\\FoodServiceApi\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -168,11 +192,16 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
@@ -185,7 +214,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -194,7 +224,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

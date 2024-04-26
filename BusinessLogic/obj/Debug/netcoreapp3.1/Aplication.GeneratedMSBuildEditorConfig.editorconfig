@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = Aplication
-build_property.ProjectDir = C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\
+build_property.ProjectDir = C:\SoftwMicro\FoodServiceApi\BusinessLogic\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
