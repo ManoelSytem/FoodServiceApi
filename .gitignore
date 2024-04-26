@@ -35,6 +35,11 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+FoodServiceApi/BusinessLogic/bin/
+FoodServiceApi/BusinessLogic/obj/
+FoodServiceApi/obj/
+
+
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
@@ -395,7 +400,27 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
-
+*.props
 # JetBrains Rider
 *.sln.iml
 /Dominio/bin/Debug/netcoreapp3.1/Dominio.dll
+/BusinessLogic/obj/
+/BusinessLogic/obj/Aplication.csproj.nuget.g.props
+/BusinessLogic/obj/Aplication.csproj.nuget.g.targets
+/BusinessLogic/obj/project.assets.json
+/BusinessLogic/obj/project.nuget.cache
+/FoodServiceApi/obj/FoodServiceApi.csproj.nuget.dgspec.json
+/FoodServiceApi/obj/FoodServiceApi.csproj.nuget.g.props
+/FoodServiceApi/obj/FoodServiceApi.csproj.nuget.g.targets
+/FoodServiceApi/obj/project.assets.json
+/FoodServiceApi/obj/project.nuget.cache
+/InfraEstrutura/obj/InfraEstrutura.csproj.nuget.dgspec.json
+/InfraEstrutura/obj/InfraEstrutura.csproj.nuget.g.props
+/InfraEstrutura/obj/InfraEstrutura.csproj.nuget.g.targets
+/InfraEstrutura/obj/project.assets.json
+/InfraEstrutura/obj/project.nuget.cache
+/XUnitTestFoodService/obj/project.assets.json
+/XUnitTestFoodService/obj/project.nuget.cache
+/XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.dgspec.json
+/XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.g.props
+/XUnitTestFoodService/obj/XUnitTestFoodService.csproj.nuget.g.targets
